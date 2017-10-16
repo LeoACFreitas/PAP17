@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aplicacao">
+          <Key>
+            <PropertyRef Name="usuario_id" />
+            <PropertyRef Name="vaga_id" />
+          </Key>
+          <Property Name="usuario_id" Type="int" Nullable="false" />
+          <Property Name="vaga_id" Type="int" Nullable="false" />
+          <Property Name="mensagem" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="categoria_projeto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="notificacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario_id" Type="int" Nullable="false" />
+          <Property Name="mensagem" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="projeto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoria_projeto_id" Type="int" Nullable="false" />
+          <Property Name="usuario_id" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="2000" />
+          <Property Name="progresso" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vaga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projeto_id" Type="int" Nullable="false" />
+          <Property Name="usuario_id" Type="int" />
+          <Property Name="funcao" Type="varchar" MaxLength="40" />
+          <Property Name="descricao" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK_aplicacao_0">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="aplicacao" Type="Self.aplicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="aplicacao">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aplicacao_1">
+          <End Role="vaga" Type="Self.vaga" Multiplicity="1" />
+          <End Role="aplicacao" Type="Self.aplicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vaga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="aplicacao">
+              <PropertyRef Name="vaga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notificacao_0">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="notificacao" Type="Self.notificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notificacao">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projeto_0">
+          <End Role="categoria_projeto" Type="Self.categoria_projeto" Multiplicity="1" />
+          <End Role="projeto" Type="Self.projeto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_projeto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projeto">
+              <PropertyRef Name="categoria_projeto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projeto_1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="projeto" Type="Self.projeto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="projeto">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaga_0">
+          <End Role="projeto" Type="Self.projeto" Multiplicity="1" />
+          <End Role="vaga" Type="Self.vaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projeto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vaga">
+              <PropertyRef Name="projeto_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaga_1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="vaga" Type="Self.vaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vaga">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamUpModelStoreContainer">
+          <EntitySet Name="aplicacao" EntityType="Self.aplicacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria_projeto" EntityType="Self.categoria_projeto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notificacao" EntityType="Self.notificacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projeto" EntityType="Self.projeto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vaga" EntityType="Self.vaga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_aplicacao_0" Association="Self.FK_aplicacao_0">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="aplicacao" EntitySet="aplicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aplicacao_1" Association="Self.FK_aplicacao_1">
+            <End Role="vaga" EntitySet="vaga" />
+            <End Role="aplicacao" EntitySet="aplicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notificacao_0" Association="Self.FK_notificacao_0">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="notificacao" EntitySet="notificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projeto_0" Association="Self.FK_projeto_0">
+            <End Role="categoria_projeto" EntitySet="categoria_projeto" />
+            <End Role="projeto" EntitySet="projeto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projeto_1" Association="Self.FK_projeto_1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="projeto" EntitySet="projeto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaga_0" Association="Self.FK_vaga_0">
+            <End Role="projeto" EntitySet="projeto" />
+            <End Role="vaga" EntitySet="vaga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaga_1" Association="Self.FK_vaga_1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="vaga" EntitySet="vaga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aplicacao">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+            <PropertyRef Name="VagaId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="VagaId" Type="Int32" Nullable="false" />
+          <Property Name="Mensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_aplicacao_0" FromRole="aplicacao" ToRole="usuario" />
+          <NavigationProperty Name="Vaga" Relationship="Self.FK_aplicacao_1" FromRole="aplicacao" ToRole="vaga" />
+        </EntityType>
+        <EntityType Name="CategoriaProjeto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_0" FromRole="categoria_projeto" ToRole="projeto" />
+        </EntityType>
+        <EntityType Name="Notificacao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="Mensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_notificacao_0" FromRole="notificacao" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="Projeto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoriaProjetoId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Progresso" Type="Int32" />
+          <NavigationProperty Name="CategoriaProjeto" Relationship="Self.FK_projeto_0" FromRole="projeto" ToRole="categoria_projeto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_projeto_1" FromRole="projeto" ToRole="usuario" />
+          <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_0" FromRole="projeto" ToRole="vaga" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrimeiroNome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UltimoNome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aplicacao" Relationship="Self.FK_aplicacao_0" FromRole="usuario" ToRole="aplicacao" />
+          <NavigationProperty Name="Notificacao" Relationship="Self.FK_notificacao_0" FromRole="usuario" ToRole="notificacao" />
+          <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_1" FromRole="usuario" ToRole="projeto" />
+          <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_1" FromRole="usuario" ToRole="vaga" />
+        </EntityType>
+        <EntityType Name="Vaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjetoId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Funcao" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Aplicacao" Relationship="Self.FK_aplicacao_1" FromRole="vaga" ToRole="aplicacao" />
+          <NavigationProperty Name="Projeto" Relationship="Self.FK_vaga_0" FromRole="vaga" ToRole="projeto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_vaga_1" FromRole="vaga" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_aplicacao_0">
+          <End Role="usuario" Type="TeamUpModel.Usuario" Multiplicity="1" />
+          <End Role="aplicacao" Type="TeamUpModel.Aplicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aplicacao">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aplicacao_1">
+          <End Role="vaga" Type="TeamUpModel.Vaga" Multiplicity="1" />
+          <End Role="aplicacao" Type="TeamUpModel.Aplicacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vaga">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aplicacao">
+              <PropertyRef Name="VagaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projeto_0">
+          <End Role="categoria_projeto" Type="TeamUpModel.CategoriaProjeto" Multiplicity="1" />
+          <End Role="projeto" Type="TeamUpModel.Projeto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_projeto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="projeto">
+              <PropertyRef Name="CategoriaProjetoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notificacao_0">
+          <End Role="usuario" Type="TeamUpModel.Usuario" Multiplicity="1" />
+          <End Role="notificacao" Type="TeamUpModel.Notificacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="notificacao">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projeto_1">
+          <End Role="usuario" Type="TeamUpModel.Usuario" Multiplicity="1" />
+          <End Role="projeto" Type="TeamUpModel.Projeto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="projeto">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaga_0">
+          <End Role="projeto" Type="TeamUpModel.Projeto" Multiplicity="1" />
+          <End Role="vaga" Type="TeamUpModel.Vaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projeto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vaga">
+              <PropertyRef Name="ProjetoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaga_1">
+          <End Role="usuario" Type="TeamUpModel.Usuario" Multiplicity="0..1" />
+          <End Role="vaga" Type="TeamUpModel.Vaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vaga">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamUpContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aplicacao" EntityType="TeamUpModel.Aplicacao" />
+          <EntitySet Name="categoria_projeto" EntityType="TeamUpModel.CategoriaProjeto" />
+          <EntitySet Name="notificacao" EntityType="TeamUpModel.Notificacao" />
+          <EntitySet Name="projeto" EntityType="TeamUpModel.Projeto" />
+          <EntitySet Name="usuario" EntityType="TeamUpModel.Usuario" />
+          <EntitySet Name="vaga" EntityType="TeamUpModel.Vaga" />
+          <AssociationSet Name="FK_aplicacao_0" Association="Self.FK_aplicacao_0">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="aplicacao" EntitySet="aplicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aplicacao_1" Association="Self.FK_aplicacao_1">
+            <End Role="vaga" EntitySet="vaga" />
+            <End Role="aplicacao" EntitySet="aplicacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projeto_0" Association="Self.FK_projeto_0">
+            <End Role="categoria_projeto" EntitySet="categoria_projeto" />
+            <End Role="projeto" EntitySet="projeto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notificacao_0" Association="Self.FK_notificacao_0">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="notificacao" EntitySet="notificacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projeto_1" Association="Self.FK_projeto_1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="projeto" EntitySet="projeto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaga_0" Association="Self.FK_vaga_0">
+            <End Role="projeto" EntitySet="projeto" />
+            <End Role="vaga" EntitySet="vaga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaga_1" Association="Self.FK_vaga_1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="vaga" EntitySet="vaga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamUpModelStoreContainer" CdmEntityContainer="TeamUpContext">
+          <EntitySetMapping Name="aplicacao">
+            <EntityTypeMapping TypeName="TeamUpModel.Aplicacao">
+              <MappingFragment StoreEntitySet="aplicacao">
+                <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+                <ScalarProperty Name="VagaId" ColumnName="vaga_id" />
+                <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_projeto">
+            <EntityTypeMapping TypeName="TeamUpModel.CategoriaProjeto">
+              <MappingFragment StoreEntitySet="categoria_projeto">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notificacao">
+            <EntityTypeMapping TypeName="TeamUpModel.Notificacao">
+              <MappingFragment StoreEntitySet="notificacao">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+                <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projeto">
+            <EntityTypeMapping TypeName="TeamUpModel.Projeto">
+              <MappingFragment StoreEntitySet="projeto">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CategoriaProjetoId" ColumnName="categoria_projeto_id" />
+                <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+                <ScalarProperty Name="Titulo" ColumnName="titulo" />
+                <ScalarProperty Name="Descricao" ColumnName="descricao" />
+                <ScalarProperty Name="Progresso" ColumnName="progresso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="TeamUpModel.Usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="Senha" ColumnName="senha" />
+                <ScalarProperty Name="PrimeiroNome" ColumnName="primeiro_nome" />
+                <ScalarProperty Name="UltimoNome" ColumnName="ultimo_nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vaga">
+            <EntityTypeMapping TypeName="TeamUpModel.Vaga">
+              <MappingFragment StoreEntitySet="vaga">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="ProjetoId" ColumnName="projeto_id" />
+                <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+                <ScalarProperty Name="Funcao" ColumnName="funcao" />
+                <ScalarProperty Name="Descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

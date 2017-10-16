@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeamUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aplicacao">
+    <Key>
+      <PropertyRef Name="usuario_id" />
+      <PropertyRef Name="vaga_id" />
+    </Key>
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="vaga_id" Type="int" Nullable="false" />
+    <Property Name="mensagem" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="categoria_projeto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="notificacao">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="mensagem" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="projeto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoria_projeto_id" Type="int" Nullable="false" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="2000" />
+    <Property Name="progresso" Type="int" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vaga">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="projeto_id" Type="int" Nullable="false" />
+    <Property Name="usuario_id" Type="int" />
+    <Property Name="funcao" Type="varchar" MaxLength="40" />
+    <Property Name="descricao" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <Association Name="FK_aplicacao_0">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="aplicacao" Type="Self.aplicacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="aplicacao">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aplicacao_1">
+    <End Role="vaga" Type="Self.vaga" Multiplicity="1" />
+    <End Role="aplicacao" Type="Self.aplicacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vaga">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="aplicacao">
+        <PropertyRef Name="vaga_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notificacao_0">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="notificacao" Type="Self.notificacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notificacao">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_projeto_0">
+    <End Role="categoria_projeto" Type="Self.categoria_projeto" Multiplicity="1" />
+    <End Role="projeto" Type="Self.projeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria_projeto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="projeto">
+        <PropertyRef Name="categoria_projeto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_projeto_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="projeto" Type="Self.projeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="projeto">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vaga_0">
+    <End Role="projeto" Type="Self.projeto" Multiplicity="1" />
+    <End Role="vaga" Type="Self.vaga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projeto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vaga">
+        <PropertyRef Name="projeto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vaga_1">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="vaga" Type="Self.vaga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vaga">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeamUpModelStoreContainer">
+    <EntitySet Name="aplicacao" EntityType="Self.aplicacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoria_projeto" EntityType="Self.categoria_projeto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notificacao" EntityType="Self.notificacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="projeto" EntityType="Self.projeto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vaga" EntityType="Self.vaga" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_aplicacao_0" Association="Self.FK_aplicacao_0">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="aplicacao" EntitySet="aplicacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aplicacao_1" Association="Self.FK_aplicacao_1">
+      <End Role="vaga" EntitySet="vaga" />
+      <End Role="aplicacao" EntitySet="aplicacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notificacao_0" Association="Self.FK_notificacao_0">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="notificacao" EntitySet="notificacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_projeto_0" Association="Self.FK_projeto_0">
+      <End Role="categoria_projeto" EntitySet="categoria_projeto" />
+      <End Role="projeto" EntitySet="projeto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_projeto_1" Association="Self.FK_projeto_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="projeto" EntitySet="projeto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vaga_0" Association="Self.FK_vaga_0">
+      <End Role="projeto" EntitySet="projeto" />
+      <End Role="vaga" EntitySet="vaga" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vaga_1" Association="Self.FK_vaga_1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="vaga" EntitySet="vaga" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

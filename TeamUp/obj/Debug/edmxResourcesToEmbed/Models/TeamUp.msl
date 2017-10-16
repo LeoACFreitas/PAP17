@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeamUpModelStoreContainer" CdmEntityContainer="TeamUpContext">
+    <EntitySetMapping Name="aplicacao">
+      <EntityTypeMapping TypeName="TeamUpModel.Aplicacao">
+        <MappingFragment StoreEntitySet="aplicacao">
+          <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+          <ScalarProperty Name="VagaId" ColumnName="vaga_id" />
+          <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria_projeto">
+      <EntityTypeMapping TypeName="TeamUpModel.CategoriaProjeto">
+        <MappingFragment StoreEntitySet="categoria_projeto">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notificacao">
+      <EntityTypeMapping TypeName="TeamUpModel.Notificacao">
+        <MappingFragment StoreEntitySet="notificacao">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+          <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projeto">
+      <EntityTypeMapping TypeName="TeamUpModel.Projeto">
+        <MappingFragment StoreEntitySet="projeto">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="CategoriaProjetoId" ColumnName="categoria_projeto_id" />
+          <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+          <ScalarProperty Name="Titulo" ColumnName="titulo" />
+          <ScalarProperty Name="Descricao" ColumnName="descricao" />
+          <ScalarProperty Name="Progresso" ColumnName="progresso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="TeamUpModel.Usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Email" ColumnName="email" />
+          <ScalarProperty Name="Senha" ColumnName="senha" />
+          <ScalarProperty Name="PrimeiroNome" ColumnName="primeiro_nome" />
+          <ScalarProperty Name="UltimoNome" ColumnName="ultimo_nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vaga">
+      <EntityTypeMapping TypeName="TeamUpModel.Vaga">
+        <MappingFragment StoreEntitySet="vaga">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="ProjetoId" ColumnName="projeto_id" />
+          <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
+          <ScalarProperty Name="Funcao" ColumnName="funcao" />
+          <ScalarProperty Name="Descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

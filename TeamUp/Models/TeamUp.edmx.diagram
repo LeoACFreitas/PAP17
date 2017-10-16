@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2f850cad0cc4adeb71621791d6eb8e1" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamUpModel.Aplicacao" Width="1.5" PointX="3.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamUpModel.CategoriaProjeto" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamUpModel.Notificacao" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamUpModel.Projeto" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamUpModel.Usuario" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamUpModel.Vaga" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="TeamUpModel.FK_aplicacao_0" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_aplicacao_1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_projeto_0" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_notificacao_0" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_projeto_1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_vaga_0" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_vaga_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
