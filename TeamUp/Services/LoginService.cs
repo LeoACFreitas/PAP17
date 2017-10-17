@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using TeamUp.Models;
+using TeamUp.Models.InternalSystem;
 using TeamUp.Util;
 
 namespace TeamUp.Services
@@ -24,16 +25,19 @@ namespace TeamUp.Services
                 result = context.usuario.Where(u => u.Email == email && u.Senha == senhaHash).FirstOrDefault();
 
             if (result == null)
-                throw new InternalException("Usuário inexistente ou senha inválida");            
+                throw new InternalException("Usuário inexistente ou senha inválida");
 
-            string userData = new JavaScriptSerializer().Serialize(result);
+            UsuarioLogado usuarioLogado = new UsuarioLogado(result);
+            UsuarioLogadoSerializable serializable = new UsuarioLogadoSerializable(result);
+
+            string userData = new JavaScriptSerializer().Serialize(serializable);
 
             FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
                 1, result.Email, DateTime.Now, DateTime.Now.AddHours(2), false, userData);
 
             string encTicket = FormsAuthentication.Encrypt(authTicket);
 
-            HttpContext.Current.User = result;
+            HttpContext.Current.User = usuarioLogado;
 
             return new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
         }

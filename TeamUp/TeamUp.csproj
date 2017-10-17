@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CadastroUsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,10 +142,10 @@
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternalSystem\UsuarioLogado.cs" />
+    <Compile Include="Models\InternalSystem\UsuarioLogadoSerializable.cs" />
     <Compile Include="Models\Notificacao.cs">
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Partials\UsuarioPartial.cs" />
     <Compile Include="Models\Projeto.cs">
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
@@ -203,6 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Partials\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

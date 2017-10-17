@@ -8,11 +8,12 @@ using TeamUp.ViewModels;
 
 namespace TeamUp.Controllers
 {
-    public class AutenticacaoController : Controller
+    public class AutenticacaoController : BaseController
     {
         
         public ActionResult Index()
         {
+
             return View("AutenticacaoView");
         }
         

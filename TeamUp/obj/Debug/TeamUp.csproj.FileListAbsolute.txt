@@ -30,3 +30,35 @@ C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\pt-br\Syste
 C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\pt-br\System.Web.Mvc.resources.dll
 C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\obj\Debug\TeamUp.dll
 C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\obj\Debug\TeamUp.pdb
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\TeamUp.dll.config
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\TeamUp.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\TeamUp.pdb
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\EntityFramework.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\EntityFramework.SqlServer.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Helpers.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Mvc.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Razor.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.Razor.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\EntityFramework.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\EntityFramework.SqlServer.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Razor.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Webpages.Razor.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Helpers.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\System.Web.Mvc.xml
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Razor.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Webpages.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Webpages.Razor.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Helpers.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\bin\pt-br\System.Web.Mvc.resources.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.csprojResolveAssemblyReference.cache
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.csproj.CoreCompileInputs.cache
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.dll
+C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.pdb

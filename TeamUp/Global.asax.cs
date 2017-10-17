@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using TeamUp.Models;
+using TeamUp.Models.InternalSystem;
 
 namespace TeamUp
 {
@@ -28,7 +29,7 @@ namespace TeamUp
             {
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
                 
-                HttpContext.Current.User = new JavaScriptSerializer().Deserialize<Usuario>(authTicket.UserData);
+                HttpContext.Current.User = new JavaScriptSerializer().Deserialize<UsuarioLogado>(authTicket.UserData);
                 
             }
         }
