@@ -30,6 +30,7 @@ namespace TeamUp.Controllers
             };
 
 
+
             using (TeamUpContext context = new TeamUpContext())
             {
                 UsuarioRepository repo = new UsuarioRepository(context);
