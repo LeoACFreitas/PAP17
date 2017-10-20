@@ -28,9 +28,10 @@ namespace TeamUp
             if (authCookie != null)
             {
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-                
-                HttpContext.Current.User = new JavaScriptSerializer().Deserialize<UsuarioLogado>(authTicket.UserData);
-                
+
+                UsuarioLogadoSerializable serialized = new JavaScriptSerializer().Deserialize<UsuarioLogadoSerializable>(authTicket.UserData);
+
+                HttpContext.Current.User = new UsuarioLogado(serialized);
             }
         }
 

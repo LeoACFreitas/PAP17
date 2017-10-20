@@ -8,21 +8,30 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using TeamUp.Models;
 using TeamUp.Models.InternalSystem;
+using TeamUp.Repositories;
 using TeamUp.Util;
 
 namespace TeamUp.Services
 {
-    public class LoginService
+    public class LoginService : IDisposable
     {
 
+        private TeamUpContext context;
+        private IUsuarioRepository usuarioRepository;
+        private bool isDisposed = false;
 
-        public static HttpCookie AuthenticateUser(string email, string senha)
+        public LoginService()
+        {
+            context = new TeamUpContext();
+            usuarioRepository = new UsuarioRepository(context);
+        }
+
+        public HttpCookie AuthenticateUser(string email, string senha)
         {
             Usuario result;
             string senhaHash = GetHash(senha);
 
-            using (TeamUpContext context = new TeamUpContext())            
-                result = context.usuario.Where(u => u.Email == email && u.Senha == senhaHash).FirstOrDefault();
+            result = usuarioRepository.SimpleWhere(u => u.Email == email && u.Senha == senhaHash).FirstOrDefault();
 
             if (result == null)
                 throw new InternalException("Usuário inexistente ou senha inválida");
@@ -61,6 +70,15 @@ namespace TeamUp.Services
             return sb.ToString();
         }
 
+
+        public void Dispose()
+        {
+            if (!isDisposed)
+            {
+                context.Dispose();
+                isDisposed = true;
+            }
+        }
 
     }
 }

@@ -1,0 +1,34 @@
+﻿@model TeamUp.ViewModels.FormularioUsuarioViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{ Cadastro de Usuário }
+
+@section Body{
+    
+    <form method="post" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
+
+        @Html.TextBoxFor(m => m.Usuario.Email)
+        @Html.ValidationMessageFor(m => m.Usuario.Email)
+
+        @Html.PasswordFor(m => m.Usuario.Senha)
+        @Html.ValidationMessageFor(m => m.Usuario.Senha)
+
+        @Html.PasswordFor(m => m.Usuario.SenhaConfirmacao)
+        @Html.ValidationMessageFor(m => m.Usuario.SenhaConfirmacao)
+
+        @Html.TextBoxFor(m => m.Usuario.PrimeiroNome)
+        @Html.ValidationMessageFor(m => m.Usuario.PrimeiroNome)
+
+        @Html.TextBoxFor(m => m.Usuario.UltimoNome)
+        @Html.ValidationMessageFor(m => m.Usuario.UltimoNome)
+
+        <input name="ImagemPerfil" type="file" />
+
+        <input type="submit" />
+
+    </form>
+
+}

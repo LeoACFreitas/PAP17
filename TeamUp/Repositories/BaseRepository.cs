@@ -7,10 +7,10 @@ using TeamUp.Util;
 
 namespace TeamUp.Repositories
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity>
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity>
     {
 
-        private TeamUpContext context;
+        protected TeamUpContext context;
 
 
         public BaseRepository(TeamUpContext context) {
@@ -48,6 +48,14 @@ namespace TeamUp.Repositories
             return (TEntity)context.Set(typeof(TEntity)).Find(id);
         }
 
+
+        public List<TEntity> GetAll()
+        {
+            return (List<TEntity>)context.Set(typeof(TEntity)).Find(null);
+        }
+
+
+        public abstract List<TEntity> SimpleWhere(Func<TEntity, bool> where);
 
     }
 }
