@@ -7,13 +7,9 @@ using System.Web;
 namespace TeamUp.Models
 {
     [MetadataType(typeof(Usuario.MetaData))]
-    public partial class Usuario
+    public partial class Usuario : IEntity
     {
-
-        [Compare(nameof(Senha))]
-        public String SenhaConfirmacao { get; set; }
-
-
+        
         internal class MetaData
         {
             [Required]
@@ -22,7 +18,7 @@ namespace TeamUp.Models
             public String Email { get; set; }
 
             [Required]
-            [StringLength(maximumLength: 30, MinimumLength = 6)]
+            [StringLength(maximumLength: 64, MinimumLength = 6)]
             public String Senha { get; set; }
 
             [Required]

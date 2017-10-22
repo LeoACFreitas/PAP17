@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TeamUp.Models;
 using TeamUp.Repositories;
 using TeamUp.Services;
+using TeamUp.Util;
 using TeamUp.ViewModels;
 
 namespace TeamUp.Controllers
@@ -24,7 +25,12 @@ namespace TeamUp.Controllers
 
         public ActionResult Index()
         {
-            return View("FormularioUsuarioView");
+            var vm = new FormularioUsuarioViewModel
+            {
+                ModoValor = FormularioUsuarioViewModel.Modo.Cadastro
+            };
+
+            return View("FormularioUsuarioView", vm);
         }
 
 
@@ -32,21 +38,55 @@ namespace TeamUp.Controllers
         {
             var vm = new FormularioUsuarioViewModel
             {
-                Usuario = usuarioRepository.FindById(User.Id)
+                Usuario = usuarioRepository.FindById(User.Id),
+                ModoValor = FormularioUsuarioViewModel.Modo.Alteracao
             };
 
-            return View("FormularioUsuarioView");
+            return View("FormularioUsuarioView", vm);
         }
 
 
         public ActionResult EfetuaCadastro(FormularioUsuarioViewModel vm)
         {
             Usuario usuario = vm.Usuario;
-            usuario.Senha = LoginService.GetHash(usuario.Senha);
-            
-            usuarioRepository.Save(usuario);            
+
+            if (vm.ModoValor == FormularioUsuarioViewModel.Modo.Cadastro)
+            {
+                usuario.Senha = LoginService.GetHash(usuario.Senha);
+
+                usuarioRepository.Save(usuario);
+            }
+            else if (vm.ModoValor == FormularioUsuarioViewModel.Modo.Alteracao)
+            {
+                usuario.Senha = usuarioRepository.FindById(usuario.Id).Senha;
+
+                usuarioRepository.Update(usuario);
+            }
+
+            if (vm.ImagemPerfil != null)
+                ImageFileService.StoreFile(ImageType.UsuarioPerfil, vm.ImagemPerfil, usuario.Id);
 
             return Content("oi");
+        }
+
+
+        public ActionResult AlteraSenha(FormularioUsuarioViewModel vm)
+        {
+            using (LoginService loginService = new LoginService())
+            {
+                try
+                {
+                    loginService.AuthenticateUser(User.Email, vm.VerificacaoSenhaAlteracao);
+                }
+                catch (InternalException)
+                {
+                    return Json(new { success = false, responseText = "Senha incorreta." });
+                }
+            }
+            
+            usuarioRepository.Update(vm.Usuario);
+
+            return Json(new { success = true, responseText = "A sua senha foi alterada com sucesso." });
         }
         
 

@@ -4,15 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section title{ Cadastro de Projeto }
+@section title{ @Model.GetModo() de Projeto }
 
 @section body{
     
     <form method="post" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
 
-        <input name="ImagemLogo" type="file" />
+        <input name="ImagemLogo" type="file" accept=".jpg"/>
+        @Html.ValidationMessage("ImagemLogo")
 
-        <input name="ImagemCapa" type="file" />
+        <input name="ImagemCapa" type="file" accept=".jpg"/>
+        @Html.ValidationMessage("ImagemCapa")
 
         @Html.TextBoxFor(m => m.Projeto.Titulo)
         @Html.ValidationMessageFor(m => m.Projeto.Titulo)
@@ -20,10 +22,10 @@
         @Html.TextAreaFor(m => m.Projeto.Descricao)
         @Html.ValidationMessageFor(m => m.Projeto.Descricao)
 
-        <input type="range" min="0" max="100" value="50" class="slider" id="Projeto.Progresso">        
+        <input type="range" min="0" max="100" value="@Model.Projeto.Progresso" class="slider" name="Projeto.Progresso" id="Projeto_Progresso">        
 
         @{Model.Categorias.Insert(0, new TeamUp.Models.CategoriaProjeto() { Id = 0, Nome = "Selecione..." });}
-        @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"), new { selected = "0"})
+        @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
         @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
 
         <br />
@@ -37,7 +39,21 @@
             @Html.TextBoxFor(m => m.Vagas[i].Descricao)
             @Html.ValidationMessageFor(m => m.Vagas[i].Descricao)
 
+            if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao)
+            {
+                @Html.HiddenFor(m => m.Vagas[i].Id);
+            }
+
+            @Html.ValidationMessage("Vaga" + i)
+
             <br />
+        }
+
+        @Html.HiddenFor(m => m.ModoValor)
+        @Html.HiddenFor(m => m.Projeto.Id)
+        @if (Model.IdCategoriaSelecionada != 0)
+        {
+            @Html.HiddenFor(m => m.IdCategoriaSelecionada)
         }
 
         <input type="submit" />

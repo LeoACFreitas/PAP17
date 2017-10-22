@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using TeamUp.Models;
@@ -7,7 +8,7 @@ using TeamUp.Util;
 
 namespace TeamUp.Repositories
 {
-    public abstract class BaseRepository<TEntity> : IRepository<TEntity>
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
 
         protected TeamUpContext context;
@@ -25,14 +26,11 @@ namespace TeamUp.Repositories
         }
 
 
-        public void Update(TEntity updated, int id)
+        public void Update(TEntity updated)
         {
-            var existing = context.Set(typeof(TEntity)).Find(id);
+            var entity = context.Set(typeof(TEntity)).Find(updated.Id);
+            context.Entry(entity).CurrentValues.SetValues(updated);
 
-            if (existing == null)
-                throw new InternalException("Registro não encontrado para atualização.");
-
-            context.Entry(existing).CurrentValues.SetValues(updated);
             context.SaveChanges();            
         }
 

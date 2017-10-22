@@ -54,6 +54,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -99,6 +105,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -112,6 +119,7 @@
       <DependentUpon>TeamUp.edmx</DependentUpon>
       <LastGenOutput>TeamUp.cs</LastGenOutput>
     </Content>
+    <Content Include="res\css\BuscaProjetos.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -123,6 +131,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\TeamUp.js" />
     <Content Include="trabalhoAtual.txt" />
     <Content Include="Web.config" />
     <Content Include="Views\Autenticacao\AutenticacaoView.cshtml" />
@@ -132,8 +141,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BuscaProjetosController.cs" />
     <Compile Include="Controllers\FormularioProjetoController.cs" />
     <Compile Include="Controllers\FormularioUsuarioController.cs" />
+    <Compile Include="CustomValidations\ConditionalFill.cs" />
+    <Compile Include="CustomValidations\ImageValidation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,12 +155,12 @@
     <Compile Include="Models\CategoriaProjeto.cs">
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\InternalSystem\UsuarioLogado.cs" />
     <Compile Include="Models\InternalSystem\UsuarioLogadoSerializable.cs" />
     <Compile Include="Models\Notificacao.cs">
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PartialEntities\AplicacaoPartial.cs" />
     <Compile Include="Models\PartialEntities\CategoriaProjetoPartial.cs" />
     <Compile Include="Models\PartialEntities\NotificacaoPartial.cs" />
     <Compile Include="Models\PartialEntities\ProjetoPartial.cs" />
@@ -187,9 +199,11 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUsuarioRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="Services\ImageFileService.cs" />
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Util\InternalException.cs" />
     <Compile Include="ViewModels\AutenticacaoViewModel.cs" />
+    <Compile Include="ViewModels\BuscaProjetosViewModel.cs" />
     <Compile Include="ViewModels\FormularioProjetoViewModel.cs" />
     <Compile Include="ViewModels\FormularioUsuarioViewModel.cs" />
   </ItemGroup>
@@ -209,6 +223,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\FormularioProjeto\FormularioProjetoView.cshtml" />
+    <Content Include="Views\BuscaProjetos\BuscaProjetosView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -218,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UserInputedFiles\ProjetoCapa\" />
+    <Folder Include="UserInputedFiles\ProjetoLogo\" />
+    <Folder Include="UserInputedFiles\UsuarioPerfil\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

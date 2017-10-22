@@ -1,0 +1,58 @@
+﻿@using TeamUp.Models;
+
+@model TeamUp.ViewModels.BuscaProjetosViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <link href="~/res/css/BuscaProjetos.css" rel="stylesheet" type="text/css" />
+}
+
+@section title{ Busca de Projetos }
+
+@section body{
+    
+    <div id="filtros">
+
+        <form method="get" action="@Url.Action("Index")">
+
+            @Html.TextBoxFor(m => m.TituloProjetoBusca)
+            @Html.ValidationMessageFor(m => m.TituloProjetoBusca)
+
+            @Html.TextBoxFor(m => m.VagaBusca)
+            @Html.ValidationMessageFor(m => m.VagaBusca)
+
+            @{Model.Categorias.Insert(0, new TeamUp.Models.CategoriaProjeto() { Id = 0, Nome = "Selecione..." });}
+            @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
+            @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
+
+            <input type="submit" />
+
+        </form>
+
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div id="resultados">
+
+        @foreach(Projeto projeto in Model.Projetos)
+        {
+
+            <div class="projetoItem col-md-2" id="@Html.Raw("projeto" + projeto.Id)">
+                <img id="@Html.Raw("usuarioImagem" + projeto.Id)" class="usuarioImagem" src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(projeto.UsuarioId + ".jpg")" />
+                <img id="@Html.Raw("projetoLogo" + projeto.Id)" class="projetoLogo" src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(projeto.Id + ".jpg")" />
+                <h4>@projeto.Titulo</h4>
+                <p>@projeto.Descricao</p>
+            </div>
+
+        }
+
+    </div>
+    
+}
+

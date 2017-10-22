@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using TeamUp.CustomValidations;
 
-namespace TeamUp.Models.PartialEntities
+namespace TeamUp.Models
 {
     [MetadataType(typeof(MetaData))]
-    public class VagaPartial
+    public partial class Vaga : IEntity
     {
 
         internal class MetaData
         {
-            [MaxLength(40)]
+
+            [StringLength(maximumLength: 40)]
             public string Funcao { get; set; }
 
-            [MaxLength(300)]
+            [StringLength(maximumLength: 300)]
+            [ConditionalFill("Funcao")]
             public string Descricao { get; set; }
 
         }

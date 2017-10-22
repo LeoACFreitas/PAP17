@@ -62,3 +62,7 @@ C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.csprojResolveAssemblyRef
 C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.csproj.CoreCompileInputs.cache
 C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.dll
 C:\Users\Leo\Source\Repos\PAP17\TeamUp\obj\Debug\TeamUp.pdb
+C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\PagedList.dll
+C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\PagedList.Mvc.dll
+C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\PagedList.xml
+C:\Users\Leo\Documents\Visual Studio 2017\Projects\TeamUp\TeamUp\bin\PagedList.Mvc.xml

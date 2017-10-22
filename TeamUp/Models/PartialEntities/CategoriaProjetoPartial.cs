@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TeamUp.Models
 {
-    public partial class CategoriaProjeto
+    public partial class CategoriaProjeto : IEntity
     {
     }
 }

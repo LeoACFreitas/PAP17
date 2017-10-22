@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section title{ Cadastro de Usuário }
+@section title{ @Model.GetModo() de Usuário }
 
 @section Body{
     
@@ -13,11 +13,14 @@
         @Html.TextBoxFor(m => m.Usuario.Email)
         @Html.ValidationMessageFor(m => m.Usuario.Email)
 
-        @Html.PasswordFor(m => m.Usuario.Senha)
-        @Html.ValidationMessageFor(m => m.Usuario.Senha)
+        @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro)
+        {
+            @Html.PasswordFor(m => m.Usuario.Senha)
+            @Html.ValidationMessageFor(m => m.Usuario.Senha)
 
-        @Html.PasswordFor(m => m.Usuario.SenhaConfirmacao)
-        @Html.ValidationMessageFor(m => m.Usuario.SenhaConfirmacao)
+            <input type="password" id="senhaConfimacao" onblur="confirmaSenha(this, 'Usuario_Senha', 'spanSenhaConfimacao')" />
+            <span id="spanSenhaConfimacao"></span>
+        }
 
         @Html.TextBoxFor(m => m.Usuario.PrimeiroNome)
         @Html.ValidationMessageFor(m => m.Usuario.PrimeiroNome)
@@ -25,10 +28,28 @@
         @Html.TextBoxFor(m => m.Usuario.UltimoNome)
         @Html.ValidationMessageFor(m => m.Usuario.UltimoNome)
 
+        @Html.HiddenFor(m => m.ModoValor)
+        @Html.HiddenFor(m => m.Usuario.Id)
+
         <input name="ImagemPerfil" type="file" />
 
         <input type="submit" />
 
     </form>
+
+    @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Alteracao)
+    {
+    <!--Colocar em uma janela e fazer a requisição por AJAX, colocando dentro do form já existente-->
+        <div id="alteracaoSenha" style="display:none">
+            @Html.PasswordFor(m => m.VerificacaoSenhaAlteracao, new { @class = "alteracaoSenha"})
+            @Html.ValidationMessageFor(m => m.VerificacaoSenhaAlteracao)
+
+            @Html.PasswordFor(m => m.Usuario.Senha, new { @class = "alteracaoSenha"})
+            @Html.ValidationMessageFor(m => m.Usuario.Senha)
+
+            <input type="password" id="senhaConfimacaoAlteracao" onblur="confirmaSenha(this, 'Usuario_Senha.alteracaoSenha', 'spanSenhaConfimacao.alteracaoSenha')"/>
+            <span id="spanSenhaConfimacao" class="alteracaoSenha"></span>
+        </div>
+    }
 
 }

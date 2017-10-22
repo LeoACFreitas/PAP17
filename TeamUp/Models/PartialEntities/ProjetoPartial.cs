@@ -7,7 +7,7 @@ using System.Web;
 namespace TeamUp.Models
 {
     [MetadataType(typeof(MetaData))]
-    public partial class Projeto
+    public partial class Projeto : IEntity
     {
 
         internal class MetaData

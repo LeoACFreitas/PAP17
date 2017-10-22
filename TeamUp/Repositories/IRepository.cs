@@ -7,10 +7,9 @@ namespace TeamUp.Repositories
     {
 
         void Save(TEntity value);
-        void Update(TEntity updated, int id);
+        void Update(TEntity updated);
         void Delete(int id);
         TEntity FindById(int id);
-        List<TEntity> GetAll();
         List<TEntity> SimpleWhere(Func<TEntity, bool> where);
 
     }

@@ -1,0 +1,16 @@
+﻿.projetoItem {
+    height: 270px;
+    border: black;
+    border-style: solid;
+    margin: 20px 50px 20px 50px;
+}
+
+.usuarioImagem {
+    width: 50px;
+    height: 50px;
+}
+
+.projetoLogo {
+    width: 100px;
+    height: 100px;
+}
