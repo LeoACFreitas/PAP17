@@ -12,7 +12,7 @@
 
 @section title{ Busca de Projetos }
 
-@section body{
+@section content{
     
     <div id="filtros">
 
@@ -28,6 +28,8 @@
             @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
             @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
 
+            @Html.HiddenFor(m => m.Projetos.Count)
+
             <input type="submit" />
 
         </form>
@@ -35,19 +37,19 @@
     </div>
 
     <br />
-    <br />
-    <br />
 
     <div id="resultados">
 
-        @foreach(Projeto projeto in Model.Projetos)
+        @for(int i = 0; i < Model.Projetos.Count(); i++)
         {
 
-            <div class="projetoItem col-md-2" id="@Html.Raw("projeto" + projeto.Id)">
-                <img id="@Html.Raw("usuarioImagem" + projeto.Id)" class="usuarioImagem" src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(projeto.UsuarioId + ".jpg")" />
-                <img id="@Html.Raw("projetoLogo" + projeto.Id)" class="projetoLogo" src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(projeto.Id + ".jpg")" />
-                <h4>@projeto.Titulo</h4>
-                <p>@projeto.Descricao</p>
+            <div class="projetoItem col-md-3 col-sm-10 col-sm-offset-1" id="@Html.Raw("projeto" + Model.Projetos[i].Id)">
+                <img id="@Html.Raw("usuarioImagem" + Model.Projetos[i].Id)" class="usuarioImagem" 
+                     src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(Model.Projetos[i].UsuarioId + ".jpg")" />
+                <img id="@Html.Raw("projetoLogo" + Model.Projetos[i].Id)" class="projetoLogo" 
+                     src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(Model.Projetos[i].Id + ".jpg")" />
+                <h4>@Model.Projetos[i].Titulo</h4>
+                <p>@Model.Projetos[i].Descricao</p>
             </div>
 
         }

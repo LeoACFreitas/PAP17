@@ -23,6 +23,7 @@ namespace TeamUp.Controllers
         }
 
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var vm = new FormularioUsuarioViewModel
@@ -46,6 +47,7 @@ namespace TeamUp.Controllers
         }
 
 
+        [AllowAnonymous]
         public ActionResult EfetuaCadastro(FormularioUsuarioViewModel vm)
         {
             Usuario usuario = vm.Usuario;

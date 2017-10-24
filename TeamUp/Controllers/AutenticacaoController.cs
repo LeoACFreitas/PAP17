@@ -9,6 +9,7 @@ using TeamUp.ViewModels;
 
 namespace TeamUp.Controllers
 {
+    [AllowAnonymous]
     public class AutenticacaoController : BaseController
     {
         

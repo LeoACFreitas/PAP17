@@ -120,6 +120,7 @@
       <LastGenOutput>TeamUp.cs</LastGenOutput>
     </Content>
     <Content Include="res\css\BuscaProjetos.css" />
+    <Content Include="res\css\TeamUp.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -224,6 +225,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\FormularioProjeto\FormularioProjetoView.cshtml" />
     <Content Include="Views\BuscaProjetos\BuscaProjetosView.cshtml" />
+    <Content Include="Views\Shared\PaginacaoView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -236,7 +238,6 @@
     <Folder Include="UserInputedFiles\ProjetoCapa\" />
     <Folder Include="UserInputedFiles\ProjetoLogo\" />
     <Folder Include="UserInputedFiles\UsuarioPerfil\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,7 +6,7 @@
 
 @section title{ @Model.GetModo() de Projeto }
 
-@section body{
+@section content{
     
     <form method="post" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
 
@@ -47,6 +47,16 @@
             @Html.ValidationMessage("Vaga" + i)
 
             <br />
+        }
+
+        @if (Html.ViewData.ModelState["other"] != null)
+        {
+            <ul>
+                @foreach (var error in Html.ViewData.ModelState["other"].Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
         }
 
         @Html.HiddenFor(m => m.ModoValor)

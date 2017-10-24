@@ -8,6 +8,7 @@ using TeamUp.ViewModels;
 
 namespace TeamUp.Controllers
 {
+    [AllowAnonymous]
     public class BuscaProjetosController : BaseController
     {
 

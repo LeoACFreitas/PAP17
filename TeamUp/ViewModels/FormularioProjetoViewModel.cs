@@ -27,7 +27,7 @@ namespace TeamUp.ViewModels
 
         public List<CategoriaProjeto> Categorias { get; set; } = new List<CategoriaProjeto>();
 
-        [Required]
+        [RegularExpression(@"[^0]", ErrorMessage="Favor selecionar uma categoria.")]
         public int IdCategoriaSelecionada { get; set; }
 
 
