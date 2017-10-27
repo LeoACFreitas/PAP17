@@ -21,10 +21,15 @@ namespace TeamUp.Models.InternalSystem
             UltimoNome = usuario.UltimoNome;
         }
 
+
         public UsuarioLogado(Usuario usuario) : base(usuario)
         {
             Identity = new GenericIdentity(usuario.Email);
         }
+
+
+        public string NomeCompleto { get { return PrimeiroNome + " " + UltimoNome; } }
+
 
         public IIdentity Identity { get; private set; }
         public bool IsInRole(string role) { return false; } //Não utilizado

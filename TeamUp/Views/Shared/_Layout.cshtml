@@ -8,17 +8,35 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/res/css/TeamUp.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/TeamUp.js"></script>
 
     @RenderSection("header", false)
 </head>
 <body>
-    
-    <div id="content" class="col-md-push-1 col-md-10 col-sm-12">
+
+    @if (IsSectionDefined("modalContent"))
+    {
+        <div id="darken">
+            <div id="modal" class="col-md-4 col-md-offset-4 col-xs-12">
+                <a id="closeModal" class="noLinkEffect" href="javascript:void(0)" onclick="closeModal()">X</a>
+
+                <h3 id="modalTitle"></h3>
+                <hr style="display: none" />
+
+                @RenderSection("modalContent")
+
+                <p id="retorno" class="preWrap"></p>
+            </div>
+        </div>
+    }
+
+    @RenderSection("outsideContent", false)
+
+    <div id="content" class="col-md-push-2 col-md-8 col-sm-12">
         @RenderSection("content")
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/TeamUp.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>

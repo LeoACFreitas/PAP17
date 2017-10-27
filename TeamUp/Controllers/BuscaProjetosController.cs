@@ -29,7 +29,8 @@ namespace TeamUp.Controllers
                 vm = new BuscaProjetosViewModel();
 
             vm.Categorias = categoriaProjetoRepository.SimpleWhere(c => true);
-            vm.Projetos = projetoRepository.PagedProjetosWithFilters(vm.IdCategoriaSelecionada, vm.TituloProjetoBusca, vm.VagaBusca, vm.Pagina);            
+            vm.Projetos = projetoRepository.PagedProjetosWithFilters(vm.IdCategoriaSelecionada, vm.TituloProjetoBusca,
+                                                                        vm.VagaBusca, vm.Pagina);            
 
             return View("BuscaProjetosView", vm);
         }

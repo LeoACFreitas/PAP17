@@ -11,6 +11,8 @@ namespace TeamUp.Models
     public partial class Vaga : IEntity
     {
 
+        public bool Disponivel { get; set; }
+
         internal class MetaData
         {
 

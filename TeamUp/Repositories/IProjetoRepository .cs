@@ -15,7 +15,10 @@ namespace TeamUp.Repositories
 
         void UpdateWithVagas(Projeto projeto);
 
-        IPagedList<Projeto> PagedProjetosWithFilters(int idCategoriaSelecionada, string tituloProjetoBusca, string vagaBusca, int pagina);
+        void SaveAplicacao(Aplicacao aplicacao);
+
+        IPagedList<Projeto> PagedProjetosWithFilters(int idCategoriaSelecionada, string tituloProjetoBusca, 
+                                                        string vagaBusca, int pagina);
 
     }
 }

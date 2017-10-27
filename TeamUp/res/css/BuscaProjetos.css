@@ -1,8 +1,17 @@
-﻿.projetoItem {
-    height: 270px;
+﻿#resultados {
+    overflow: hidden;
+}
+
+.itemContainer {
+    padding: 0 25px 0 25px;
+    margin-top: 30px;
+}
+
+.projetoItem {
+    height: 300px;
     border: black;
     border-style: solid;
-    margin-top: 20px;
+    padding: 10px 10px 10px 10px;
 }
 
 .usuarioImagem {
@@ -15,8 +24,6 @@
     height: 100px;
 }
 
-@media (min-width: 992px) {
-    .projetoItem {
-        margin-left: 6.25%;
-    }
+#paginacao {
+    float: right;
 }

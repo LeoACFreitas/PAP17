@@ -1,0 +1,101 @@
+﻿@using TeamUp.Models;
+
+@model TeamUp.ViewModels.ProjetoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{ @Model.Projeto.Titulo }
+
+@section header{    
+    <link href="~/res/css/Projeto.css" rel="stylesheet" type="text/css" />    
+    <script>
+
+        function enviarAplicacao() {
+            if (sendAjax('@Url.Action("SalvarAplicacao")', $('#formAjax').serialize())) {
+                var vagaId = $('#@Html.IdFor(m => m.Aplicacao.VagaId)').val();
+                $('#botaoVaga' + vagaId).attr('disabled', '');
+                $('#botaoVaga' + vagaId).text('Aplicação enviada');
+            }
+        }
+
+    </script>
+}
+
+@section outsideContent{    
+    <div id="cover" class="col-xs-12" style="
+         background-image:url('@Url.Content("~/UserInputedFiles/ProjetoCapa/" + Html.Raw(Model.Projeto.Id + ".jpg"))')">
+        <h1 id="tituloProjeto">@Model.Projeto.Titulo</h1>
+        <div id="logo" style="
+             background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(Model.Projeto.Id + ".jpg"))')">            
+        </div>
+    </div>
+}
+
+@section content{
+    <div id="responsavel">
+        <a id="linkUsuario">
+            <div id="reponsavelImagem" style="
+             background-image:url('@Url.Content("~/UserInputedFiles/UsuarioPerfil/" + Model.Projeto.UsuarioId + ".jpg")')">
+            </div>
+            <h3 style="color:gray;font-weight:400;margin: 0 0 0 10px;display: flex;">                
+                @Model.Projeto.Usuario.PrimeiroNome @Model.Projeto.Usuario.UltimoNome
+                <small class="observacao" style="top:-5px">autor</small>
+            </h3>
+        </a>
+    </div>
+
+    <h3 style="float:right; color:gray;font-weight:400"><small class="observacao">categoria</small>@Model.Projeto.CategoriaProjeto.Nome</h3>
+
+    <div id="wrapper" class="col-xs-10 col-sm-offset-1">
+        <div class="itemDetalhe">
+            <h2>Sobre o projeto:</h2>
+            <p class="preWrap">@Model.Projeto.Descricao</p>
+        </div>
+
+        <div class="itemDetalhe">
+            <h2>Progresso:</h2>
+            <input id="Projeto_Progresso" name="Projeto.Progresso" class="slider col-xs-12" readonly type="range" min="0"
+                   max="100" value="@Model.Projeto.Progresso">
+        </div>
+
+        <div class="itemDetalhe">
+            <h2>Vagas:</h2>
+            @foreach (Vaga v in Model.Projeto.Vaga)
+            {
+                <h3>@v.Funcao</h3>
+                <p class="preWrap">@v.Descricao</p>
+                if (HttpContext.Current.Request.IsAuthenticated)
+                {
+                    if (v.Disponivel)
+                    {
+                        <button id="@Html.Raw("botaoVaga" + v.Id)" onclick="showModal('Aplicação à vaga: @v.Funcao');
+                            $('#@Html.IdFor(m => m.Aplicacao.VagaId)').val('@v.Id')">
+                            Aplicar à vaga
+                        </button>
+                    }
+                    else
+                    {
+                        <button disabled>Aplicação enviada</button>
+                    }
+                }
+            }
+        </div>
+
+
+    </div>
+}
+
+@section modalContent{
+
+    <form id="formAjax" action="javascript: enviarAplicacao()">
+        @Html.TextAreaFor(m => m.Aplicacao.Mensagem)
+        @Html.ValidationMessageFor(m => m.Aplicacao.Mensagem)
+        @Html.HiddenFor(m => m.Projeto.Id)
+        @Html.HiddenFor(m => m.Aplicacao.VagaId)
+
+        <input type="submit" value="Enviar" />
+    </form>
+    
+}

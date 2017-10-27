@@ -19,12 +19,6 @@ namespace TeamUp.Repositories
         {
             throw new NotImplementedException();
         }
-
-
-        public override List<Usuario> SimpleWhere(Func<Usuario, bool> where)
-        {
-            return context.usuario.Where(where).ToList();
-        }
-
+        
     }
 }

@@ -1,4 +1,6 @@
 ﻿@using TeamUp.Models;
+@using PagedList;
+@using PagedList.Mvc;
 
 @model TeamUp.ViewModels.BuscaProjetosViewModel
 
@@ -28,32 +30,40 @@
             @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
             @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
 
-            @Html.HiddenFor(m => m.Projetos.Count)
-
             <input type="submit" />
 
         </form>
 
     </div>
 
-    <br />
 
     <div id="resultados">
 
         @for(int i = 0; i < Model.Projetos.Count(); i++)
         {
 
-            <div class="projetoItem col-md-3 col-sm-10 col-sm-offset-1" id="@Html.Raw("projeto" + Model.Projetos[i].Id)">
-                <img id="@Html.Raw("usuarioImagem" + Model.Projetos[i].Id)" class="usuarioImagem" 
-                     src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(Model.Projetos[i].UsuarioId + ".jpg")" />
-                <img id="@Html.Raw("projetoLogo" + Model.Projetos[i].Id)" class="projetoLogo" 
-                     src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(Model.Projetos[i].Id + ".jpg")" />
-                <h4>@Model.Projetos[i].Titulo</h4>
-                <p>@Model.Projetos[i].Descricao</p>
+            <div class="itemContainer col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1" id="@Html.Raw("projeto" + Model.Projetos[i].Id)">
+                <a class="noLinkEffect" href="@Url.Action("Index", "Projeto", new { Id = Model.Projetos[i].Id })" >
+                    <div class="projetoItem">
+                        <img id="@Html.Raw("usuarioImagem" + Model.Projetos[i].Id)" class="usuarioImagem"
+                             src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(Model.Projetos[i].UsuarioId + ".jpg")" />
+                        <img id="@Html.Raw("projetoLogo" + Model.Projetos[i].Id)" class="projetoLogo"
+                             src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(Model.Projetos[i].Id + ".jpg")" />
+                        <h4>@Model.Projetos[i].Titulo</h4>
+                        <p>@Model.Projetos[i].Descricao</p>
+                    </div>
+                </a>
             </div>
 
         }
 
+    </div>
+
+    <div id="paginacao">
+        @Html.PagedListPager(Model.Projetos, p => Url.Action("Index", new { pagina = p,
+                                                                    TituloProjetoBusca = Model.TituloProjetoBusca,
+                                                                    VagaBusca = Model.VagaBusca,
+                                                                    IdCategoriaSelecionada = Model.IdCategoriaSelecionada}))
     </div>
     
 }

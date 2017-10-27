@@ -55,12 +55,7 @@ namespace TeamUp.Controllers
             }
 
             vm.IdCategoriaSelecionada = vm.Projeto.CategoriaProjetoId;
-
-            if (vm.ImagemCapa != null)
-                ImageFileService.StoreFile(ImageType.ProjetoCapa, vm.ImagemCapa, vm.Projeto.Id);
-            if (vm.ImagemLogo != null)
-                ImageFileService.StoreFile(ImageType.ProjetoLogo, vm.ImagemLogo, vm.Projeto.Id);
-
+            
             return View("FormularioProjetoView", vm);
         }
 

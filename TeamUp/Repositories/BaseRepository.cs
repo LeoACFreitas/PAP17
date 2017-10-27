@@ -53,7 +53,10 @@ namespace TeamUp.Repositories
         }
 
 
-        public abstract List<TEntity> SimpleWhere(Func<TEntity, bool> where);
+        public List<TEntity> SimpleWhere(Func<TEntity, bool> where)
+        {
+            return context.Set<TEntity>().Where(where).ToList();
+        }
 
     }
 }

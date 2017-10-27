@@ -1,5 +1,53 @@
-﻿#content {
+﻿h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.preWrap {
+    white-space: pre-wrap;
+}
+
+.noLinkEffect {
+    color: inherit;
+    text-decoration: none;
+}
+
+.noLinkEffect:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+#content {
     background-color: #f2f2f2;
     padding-bottom: 20px;
     overflow: hidden;
+}
+
+#modal {
+    min-height: 250px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 0 15px 0 15px;
+}
+
+#closeModal {
+    float: right;
+    margin-top: 5px;
+    color: lightslategray;
+}
+
+#darken {
+    position: fixed;
+    background: #000;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    display: none;
+    align-items: center;
 }

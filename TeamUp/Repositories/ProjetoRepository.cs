@@ -20,13 +20,7 @@ namespace TeamUp.Repositories
         {
             return context.projeto.Where(p => p.Id == id).Include(p => p.Vaga).FirstOrDefault();
         }
-
         
-        public override List<Projeto> SimpleWhere(Func<Projeto, bool> where)
-        {
-            return context.projeto.Where(where).ToList();
-        }
-
 
         public void UpdateWithVagas(Projeto projeto)
         {
@@ -50,7 +44,8 @@ namespace TeamUp.Repositories
         }
 
 
-        public IPagedList<Projeto> PagedProjetosWithFilters(int idCategoriaSelecionada, string tituloProjetoBusca, string vagaBusca, int pagina)
+        public IPagedList<Projeto> PagedProjetosWithFilters(int idCategoriaSelecionada, string tituloProjetoBusca, 
+                                                            string vagaBusca, int pagina)
         {
             var query = context.projeto.Where(p => true);
 
@@ -63,9 +58,16 @@ namespace TeamUp.Repositories
             if (!String.IsNullOrEmpty(vagaBusca))
                 query = query.Where(p => p.Vaga.Any(v => v.Funcao.Contains(vagaBusca)));
 
-            query = query.OrderByDescending(p => p.Id);
+            query = query.Include(p => p.Vaga).Include(p => p.CategoriaProjeto).Include(p => p.Usuario).OrderByDescending(p => p.Id);
 
-            return query.ToPagedList(pagina, 12);
+            return query.ToPagedList(pagina, 6);
+        }
+
+
+        public void SaveAplicacao(Aplicacao aplicacao)
+        {
+            context.aplicacao.Add(aplicacao);
+            context.SaveChanges();
         }
 
     }

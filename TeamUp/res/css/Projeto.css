@@ -1,0 +1,74 @@
+﻿#cover {
+    position: relative;
+    background-size: cover;
+    height: 200px;
+    text-align: center;
+}
+
+#logo {
+    position: relative;
+    background-size: cover;
+    margin: 0 auto;
+    z-index: 1;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: gainsboro;
+    width: 120px;
+    height: 120px;
+    bottom: -135px;
+}
+
+#tituloProjeto {
+    margin: 0 0 0 0;
+}
+
+#wrapper {
+    margin-top: 40px;
+}
+
+.observacao {
+    position: relative;
+    top: -10px;
+    margin-right: 5px;
+}
+
+.itemDetalhe{
+    margin-bottom: 50px;
+}
+
+#responsavel {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#reponsavelImagem {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: gray;
+    background-size: cover;
+    display: inline-block;
+}
+
+#linkUsuario {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    #cover {
+        height: 400px;
+        background-size: cover;
+    }
+    #logo {
+        width: 200px;
+        height: 200px;
+        bottom: -255px;
+    }
+    #reponsavelImagem {
+        height: 50px;
+        width: 50px;
+    }
+}

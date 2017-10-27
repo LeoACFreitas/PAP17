@@ -1,0 +1,27 @@
+﻿@using TeamUp.Models
+
+@model TeamUp.ViewModels.PainelControleViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{ Painel de Controle de Projetos }
+
+@section header{
+    <link rel="stylesheet" href="~/res/css/PainelControle.css"/>
+}
+
+@section content{
+    
+    <div id="resultados">
+        @foreach (Projeto p in Model.Projetos)
+        {
+            <div class="itemProjeto col-sm-10 col-sm-offset-1">
+                <div class="logo" style="background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(p.Id + ".jpg"))')"></div>
+                <h4>@p.Titulo</h4>
+                <p>@p.Descricao</p>
+            </div>
+        }
+    </div>
+}

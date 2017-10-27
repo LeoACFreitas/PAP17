@@ -1,0 +1,22 @@
+﻿.itemProjeto {
+    min-height: 80px;
+    border-style: solid;
+    border-color: black;
+    margin: 15px 0 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    position: relative;
+    height: 50px;
+    width: 50px;    
+    
+}
+
+@media (min-width: 992px) {
+    .itemProjeto {
+        min-height: 150px;
+    }
+
+}
