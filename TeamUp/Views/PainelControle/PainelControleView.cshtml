@@ -14,13 +14,20 @@
 
 @section content{
     
-    <div id="resultados">
+    <div id="resultados" class="col-sm-10 col-sm-offset-1">
         @foreach (Projeto p in Model.Projetos)
         {
-            <div class="itemProjeto col-sm-10 col-sm-offset-1">
+            <div class="itemProjeto">
                 <div class="logo" style="background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(p.Id + ".jpg"))')"></div>
-                <h4>@p.Titulo</h4>
-                <p>@p.Descricao</p>
+                <div class="textoItem">
+                    <h3>@p.Titulo</h3>
+                    <p>@p.Descricao</p>
+                </div>
+                <div class="acoesProjeto">
+                    <button class="acaoProjeto">asd</button>
+                    <button class="acaoProjeto">fgh</button>
+                    <button class="acaoProjeto">jkl</button>
+                </div>
             </div>
         }
     </div>
