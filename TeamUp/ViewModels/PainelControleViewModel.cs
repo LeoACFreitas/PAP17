@@ -11,7 +11,9 @@ namespace TeamUp.ViewModels
 
         public List<Projeto> Projetos { get; set; }
 
-
+        #region aplicacoesPartial
+        public List<Aplicacao> Aplicacoes { get; set; }
+        #endregion
 
     }
 }

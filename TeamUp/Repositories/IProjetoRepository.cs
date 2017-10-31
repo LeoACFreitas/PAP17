@@ -20,5 +20,11 @@ namespace TeamUp.Repositories
         IPagedList<Projeto> PagedProjetosWithFilters(int idCategoriaSelecionada, string tituloProjetoBusca, 
                                                         string vagaBusca, int pagina);
 
+        List<Aplicacao> GetAplicacoesByProjeto(int projetoId);
+
+        void DeleteAplicacao(Aplicacao aplicacao);
+
+        Aplicacao FindAplicacao(int vagaId, int usuarioId);
+
     }
 }

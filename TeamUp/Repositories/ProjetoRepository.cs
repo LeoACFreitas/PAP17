@@ -58,7 +58,8 @@ namespace TeamUp.Repositories
             if (!String.IsNullOrEmpty(vagaBusca))
                 query = query.Where(p => p.Vaga.Any(v => v.Funcao.Contains(vagaBusca)));
 
-            query = query.Include(p => p.Vaga).Include(p => p.CategoriaProjeto).Include(p => p.Usuario).OrderByDescending(p => p.Id);
+            query = query.Include(p => p.Vaga).Include(p => p.CategoriaProjeto).Include(p => p.Usuario)
+                                                                            .OrderByDescending(p => p.Id);
 
             return query.ToPagedList(pagina, 6);
         }
@@ -68,6 +69,28 @@ namespace TeamUp.Repositories
         {
             context.aplicacao.Add(aplicacao);
             context.SaveChanges();
+        }
+
+
+        public List<Aplicacao> GetAplicacoesByProjeto(int projetoId)
+        {
+            return context.aplicacao.Where(a => a.Vaga.ProjetoId == projetoId)
+                    .Include(a => a.Vaga).Include(a => a.Vaga.Projeto).ToList();
+        }
+
+
+        public void DeleteAplicacao(Aplicacao aplicacao)
+        {
+            context.Entry(aplicacao).State = EntityState.Deleted;
+
+            context.SaveChanges();
+        }
+
+
+        public Aplicacao FindAplicacao(int vagaId, int usuarioId)
+        {
+            return context.aplicacao.Where(a => a.VagaId == vagaId && a.UsuarioId == usuarioId)
+                    .Include(a => a.Vaga).Include(a => a.Vaga.Projeto).Include(a => a.Usuario).FirstOrDefault();
         }
 
     }

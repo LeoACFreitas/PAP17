@@ -203,7 +203,7 @@
     <Compile Include="Repositories\NotificacaoRepository.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\CategoriaProjetoRepository.cs" />
-    <Compile Include="Repositories\IProjetoRepository .cs" />
+    <Compile Include="Repositories\IProjetoRepository.cs" />
     <Compile Include="Repositories\ICategoriaProjetoRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUsuarioRepository.cs" />
@@ -238,6 +238,7 @@
     <Content Include="Views\BuscaProjetos\BuscaProjetosView.cshtml" />
     <Content Include="Views\Projeto\ProjetoView.cshtml" />
     <Content Include="Views\PainelControle\PainelControleView.cshtml" />
+    <Content Include="Views\PainelControle\AplicacoesView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

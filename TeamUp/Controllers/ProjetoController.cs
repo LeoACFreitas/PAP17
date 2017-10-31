@@ -11,10 +11,10 @@ namespace TeamUp.Controllers
 {
     public class ProjetoController : BaseController
     {
-        
+
+        private IVagaRepository vagaRepository;
         private IProjetoRepository projetoRepository;
         private INotificacaoRepository notificacaoRepository;
-        private IVagaRepository vagaRepository;
 
 
         public ProjetoController()

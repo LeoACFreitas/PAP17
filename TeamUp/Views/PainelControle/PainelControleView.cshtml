@@ -10,25 +10,102 @@
 
 @section header{
     <link rel="stylesheet" href="~/res/css/PainelControle.css"/>
+    <script>
+        
+        function modalExclusao(pTitulo, pId) {
+            showModal('Excluir projeto ' + pTitulo, '#exclusao');
+            $("#nomeProjeto").text(pTitulo);
+            $("#confirmaExclusao").click(pId, function (inbound) {
+                if (sendAjax('@Url.Action("ExcluirProjeto")', { Id: inbound.data })) {
+                    $("#projeto" + inbound.data).remove();
+                    $("#exclusao").hide();
+                }
+            });
+        }
+
+        function modalAplicacoes(pTitulo, pId) {
+            showModal('Aplicações do projeto ' + pTitulo, '#aplicacoes', ModalSize.LARGE);
+            $.get("@Url.Action("ConsultaAplicacoes")", { Id: pId })
+                .done(function (data) {
+                    $("#aplicacoes").html(data);
+                });
+            $('#aplicacoes').change(function (changes) {
+                if (changes.type == 'display') $('#aplicacoes').html('');
+            });
+        }
+
+        function aceitarAplicacao(usuarioId, vagaId) {
+            $("#aplicacoes").html('');
+            $("#confirmacao").show();
+            $("#acaoAplicacao").text('aceitar');
+            $("#confirmaAplicacao").click(function () {
+                if (sendAjax('@Url.Action("AceitarAplicacao")', { usuarioId: usuarioId, vagaId: vagaId })) {
+                    $("#resultadosAplicacoes").html('');
+                    $("#confimacao").hide();
+                }
+            });
+        }
+
+        function rejeitarAplicacao(usuarioId, vagaId) {
+            $("#aplicacoes").html('');
+            $("#confirmacao").show();
+            $("#acaoAplicacao").text('rejeitar');
+            $("#confirmaAplicacao").click(function () {
+                if (sendAjax('@Url.Action("RejeitarAplicacao")', { usuarioId: usuarioId, vagaId: vagaId })) {
+                    $("#resultadosAplicacoes").html('');
+                    $("#confimacao").hide();
+                }
+            });
+        }
+
+    </script>
 }
 
 @section content{
     
-    <div id="resultados" class="col-sm-10 col-sm-offset-1">
+    <div id="resultadosProjetos" class="col-sm-10 col-sm-offset-1">
         @foreach (Projeto p in Model.Projetos)
         {
-            <div class="itemProjeto">
+            <div id="@Html.Raw("projeto" + p.Id)" class="item">
                 <div class="logo" style="background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(p.Id + ".jpg"))')"></div>
                 <div class="textoItem">
                     <h3>@p.Titulo</h3>
                     <p>@p.Descricao</p>
                 </div>
-                <div class="acoesProjeto">
-                    <button class="acaoProjeto">asd</button>
-                    <button class="acaoProjeto">fgh</button>
-                    <button class="acaoProjeto">jkl</button>
+                <div class="acoesItem">
+                    <a class="acaoItem" href="@Url.Action("AlteraProjeto", "FormularioProjeto", new { Id = p.Id })">
+                        <button style="width:100%">
+                            Modificar
+                        </button>
+                    </a>
+                    <button class="acaoItem" onclick="modalExclusao('@p.Titulo', '@p.Id')">
+                        Excluir
+                    </button>
+                    <button class="acaoItem" onclick="modalAplicacoes('@p.Titulo', '@p.Id')">
+                        Ver Aplicações
+                    </button>
                 </div>
             </div>
         }
     </div>
+}
+
+@section modalContent{
+    
+    <div id="exclusao" style="display:none">
+        <p>Você deseja realmente excluir o projeto "<span id="nomeProjeto"></span>"?</p>
+        <button id="confirmaExclusao">Sim</button>
+        <button onclick="closeModal('#exlusao')">Não</button>
+    </div>
+    
+    <div id="aplicacoes" style="display:none">
+
+    </div>
+
+    <div id="confirmacao" style="display:none">
+        <p>Você deseja <span id="acaoAplicacao"></span> a aplicação?</p>
+        <button id="confirmaAplicacao">Sim</button>
+        <button onclick="closeModal('#confirmacao')">Não</button>
+    </div>
+
 }

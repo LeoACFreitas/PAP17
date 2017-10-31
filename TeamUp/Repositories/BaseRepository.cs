@@ -37,7 +37,10 @@ namespace TeamUp.Repositories
 
         public void Delete(int id)
         {
-            context.Set(typeof(TEntity)).Remove(id);
+            var entity = context.Set(typeof(TEntity)).Find(id);
+            context.Entry(entity).State = EntityState.Deleted;
+
+            context.SaveChanges();
         }
 
 

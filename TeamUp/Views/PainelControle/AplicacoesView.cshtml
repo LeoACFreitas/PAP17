@@ -1,0 +1,36 @@
+﻿@using TeamUp.Models;
+
+@model TeamUp.ViewModels.PainelControleViewModel
+
+<div id="resultadosAplicacoes"class="col-sm-12">
+
+    @if (Model.Aplicacoes.Count != 0)
+    {
+        foreach (Aplicacao a in Model.Aplicacoes)
+        {
+            <div class="item itemAplicacao">
+                <div id="@Html.Raw("aplicacao" + a.UsuarioId + "-" + a.VagaId)" class="usuarioImagem" style="background-image:
+                 url('@Url.Content("~/UserInputedFiles/UsuarioPerfil/" + Html.Raw(a.UsuarioId + ".jpg"))')">
+                </div>
+                <div class="textoItem">
+                    <h3>@a.Vaga.Funcao</h3>
+                    <p>@a.Mensagem</p>
+                </div>
+                <div class="acoesItem">
+                    <button class="acaoItem" onclick="aceitarAplicacao(@a.UsuarioId, @a.VagaId)">
+                        Aceitar
+                    </button>
+                    <button class="acaoItem" onclick="rejeitarAplicacao(@a.UsuarioId, @a.VagaId)">
+                        Rejeitar
+                    </button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h4>Não há aplicações para esse projeto.</h4>
+    }
+
+
+</div>
