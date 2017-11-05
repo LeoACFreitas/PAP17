@@ -6,6 +6,7 @@ using System.Web;
 
 namespace TeamUp.Models
 {
+
     [MetadataType(typeof(MetaData))]
     public partial class Projeto : IEntity
     {
@@ -16,13 +17,17 @@ namespace TeamUp.Models
             public int CategoriaProjetoId { get; set; }
             
             [Required]
-            [MaxLength(60)]
-            public string Titulo { get; set; }
+            [MaxLength(40)]
+            public string Nome { get; set; }
 
             [Required]
             [MaxLength(2000)]
+            public string Sobre { get; set; }
+
+            [Required]
+            [MaxLength(50)]
             public string Descricao { get; set; }
-            
+
         }
 
     }

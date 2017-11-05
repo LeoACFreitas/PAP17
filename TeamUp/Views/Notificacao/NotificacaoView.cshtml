@@ -1,0 +1,14 @@
+﻿@using TeamUp.Models;
+
+@model List<Notificacao>
+
+@foreach (Notificacao n in Model)
+{
+    <div id="@n.Id" class="notificacao">
+        <h4><small>@n.Data</small></h4>
+        <p>@n.Mensagem</p>
+        <div id="notificacaoAcoes">
+            <button onclick="deleteNotificacao('@Url.Action("ExcluirNotificacao", "Notificacao")', @n.Id)">Excluir</button>            
+        </div>
+    </div>
+}

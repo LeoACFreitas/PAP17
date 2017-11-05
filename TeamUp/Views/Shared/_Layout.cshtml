@@ -25,12 +25,40 @@
 
                 <div id="modalContent">
                     @RenderSection("modalContent")
+
+                    <div id="notificacoes">
+
+                    </div>
                 </div>
 
                 <p id="retorno" class="preWrap"></p>
             </div>
         </div>
     }
+
+    <div id="menu">
+        <ul class="menuList">
+            <li>
+                <a href="javascript:loadNotificacoes('@Url.Action("Index", "Notificacao")')">
+                    Notificações
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "PainelControle")">
+                    Painel de Controle
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "BuscaProjetos")">
+                    Busca de Projetos
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="menuPlaceHolder">
+    </div>
+
 
     @RenderSection("outsideContent", false)
 

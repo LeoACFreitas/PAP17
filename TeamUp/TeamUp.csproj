@@ -123,6 +123,7 @@
     <Content Include="res\css\PainelControle.css" />
     <Content Include="res\css\Projeto.css" />
     <Content Include="res\css\TeamUp.css" />
+    <Content Include="res\css\Usuario.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -147,13 +148,16 @@
     <Compile Include="Controllers\BuscaProjetosController.cs" />
     <Compile Include="Controllers\FormularioProjetoController.cs" />
     <Compile Include="Controllers\FormularioUsuarioController.cs" />
+    <Compile Include="Controllers\NotificacaoController.cs" />
     <Compile Include="Controllers\PainelControleController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="CustomValidations\ConditionalFill.cs" />
     <Compile Include="CustomValidations\ImageValidation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BackgroundImageHelper.cs" />
     <Compile Include="Models\Aplicacao.cs">
       <DependentUpon>TeamUp.tt</DependentUpon>
     </Compile>
@@ -218,6 +222,7 @@
     <Compile Include="ViewModels\FormularioUsuarioViewModel.cs" />
     <Compile Include="ViewModels\PainelControleViewModel.cs" />
     <Compile Include="ViewModels\ProjetoViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -239,6 +244,8 @@
     <Content Include="Views\Projeto\ProjetoView.cshtml" />
     <Content Include="Views\PainelControle\PainelControleView.cshtml" />
     <Content Include="Views\PainelControle\AplicacoesView.cshtml" />
+    <Content Include="Views\Usuario\UsuarioView.cshtml" />
+    <Content Include="Views\Notificacao\NotificacaoView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="res\img\" />
     <Folder Include="UserInputedFiles\ProjetoCapa\" />
     <Folder Include="UserInputedFiles\ProjetoLogo\" />
     <Folder Include="UserInputedFiles\UsuarioPerfil\" />

@@ -6,9 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section title{ @Model.Projeto.Titulo }
+@section title{ @Model.Projeto.Nome }
 
-@section header{    
+@section header{
     <link href="~/res/css/Projeto.css" rel="stylesheet" type="text/css" />    
     <script>
 
@@ -20,26 +20,33 @@
             }
         }
 
+        function abandonarVaga(id) {
+            $.get('@Url.Action("AbandonarVaga")', { id: id }, function (data) {
+                $(".abandonarVaga#" + id).attr('disabled', '');
+                $(".abandonarVaga#" + id).text(data.responseText);
+            }).fail(function (data) {
+                alert(data);
+            });
+        }
+
     </script>
 }
 
 @section outsideContent{    
-    <div id="cover" class="col-xs-12" style="
-         background-image:url('@Url.Content("~/UserInputedFiles/ProjetoCapa/" + Html.Raw(Model.Projeto.Id + ".jpg"))')">
-        <h1 id="tituloProjeto">@Model.Projeto.Titulo</h1>
-        <div id="logo" style="
-             background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(Model.Projeto.Id + ".jpg"))')">            
+    <div id="cover" class="col-xs-12" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoCapa)">
+        <h1 id="tituloProjeto">@Model.Projeto.Nome</h1>
+        <h2>@Model.Projeto.Descricao</h2>
+        <div id="logo" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo)">            
         </div>
     </div>
 }
 
 @section content{
     <div id="responsavel">
-        <a id="linkUsuario">
-            <div id="reponsavelImagem" style="
-             background-image:url('@Url.Content("~/UserInputedFiles/UsuarioPerfil/" + Model.Projeto.UsuarioId + ".jpg")')">
+        <a id="linkUsuario" class="noLinkEffect" href="@Url.Action("", "Usuario", new { Id = Model.Projeto.UsuarioId })">
+            <div id="reponsavelImagem" style="@Html.BackgroundImage(Model.Projeto.UsuarioId, ImageType.UsuarioPerfil)">
             </div>
-            <h3 style="color:gray;font-weight:400;margin: 0 0 0 10px;display: flex;">                
+            <h3 style="color:gray;font-weight:400;margin: 0 0 0 10px;display: flex;">
                 @Model.Projeto.Usuario.PrimeiroNome @Model.Projeto.Usuario.UltimoNome
                 <small class="observacao" style="top:-5px">autor</small>
             </h3>
@@ -51,7 +58,7 @@
     <div id="wrapper" class="col-xs-10 col-sm-offset-1">
         <div class="itemDetalhe">
             <h2>Sobre o projeto:</h2>
-            <p class="preWrap">@Model.Projeto.Descricao</p>
+            <p class="preWrap">@Model.Projeto.Sobre</p>
         </div>
 
         <div class="itemDetalhe">
@@ -68,34 +75,42 @@
                 <p class="preWrap">@v.Descricao</p>
                 if (HttpContext.Current.Request.IsAuthenticated)
                 {
-                    if (v.Disponivel)
+                    switch (v.Disponibilidade)
                     {
-                        <button id="@Html.Raw("botaoVaga" + v.Id)" onclick="showModal('Aplicação à vaga: @v.Funcao');
-                            $('#@Html.IdFor(m => m.Aplicacao.VagaId)').val('@v.Id')">
-                            Aplicar à vaga
-                        </button>
-                    }
-                    else
-                    {
-                        <button disabled>Aplicação enviada</button>
+                        case DisponibilidadeVaga.AplicacaoEnviada:
+                            <button disabled>Aplicação enviada</button>
+                            break;
+                        case DisponibilidadeVaga.OcupandoEla:
+                            <button id="@v.Id" class="abandonarVaga" onclick="abandonarVaga(@v.Id)">Abandornar vaga</button>
+                            break;
+                        case DisponibilidadeVaga.VagaOcupada:
+                            <button disabled>Vaga ocupada</button>
+                            break;
+                        case DisponibilidadeVaga.Disponivel:
+                            <button id="@Html.Raw("botaoVaga" + v.Id)" onclick="showModal('Aplicação à vaga: @v.Funcao', '#envioAplicacao');
+                                                                            $('#@Html.IdFor(m => m.Aplicacao.VagaId)').val('@v.Id')">
+                                Aplicar à vaga
+                            </button>
+                            break;
                     }
                 }
             }
         </div>
-
 
     </div>
 }
 
 @section modalContent{
 
-    <form id="formAjax" action="javascript: enviarAplicacao()">
-        @Html.TextAreaFor(m => m.Aplicacao.Mensagem)
-        @Html.ValidationMessageFor(m => m.Aplicacao.Mensagem)
-        @Html.HiddenFor(m => m.Projeto.Id)
-        @Html.HiddenFor(m => m.Aplicacao.VagaId)
+    <div id="envioAplicacao" style="display: none">
+        <form id="formAjax" action="javascript: enviarAplicacao()">
+            @Html.TextAreaFor(m => m.Aplicacao.Mensagem)
+            @Html.ValidationMessageFor(m => m.Aplicacao.Mensagem)
+            @Html.HiddenFor(m => m.Projeto.Id)
+            @Html.HiddenFor(m => m.Aplicacao.VagaId)
 
-        <input type="submit" value="Enviar" />
-    </form>
-    
+            <input type="submit" value="Enviar" />
+        </form>
+    </div>
+
 }

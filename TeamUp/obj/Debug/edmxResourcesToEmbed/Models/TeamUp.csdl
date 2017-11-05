@@ -27,6 +27,7 @@
     <Property Name="UsuarioId" Type="Int32" Nullable="false" />
     <Property Name="Mensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_notificacao_0" FromRole="notificacao" ToRole="usuario" />
+    <Property Name="Data" Type="DateTime" Nullable="true" />
   </EntityType>
   <EntityType Name="Projeto">
     <Key>
@@ -35,12 +36,13 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoriaProjetoId" Type="Int32" Nullable="false" />
     <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-    <Property Name="Titulo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Descricao" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sobre" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="Progresso" Type="Int32" />
     <NavigationProperty Name="CategoriaProjeto" Relationship="Self.FK_projeto_0" FromRole="projeto" ToRole="categoria_projeto" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_projeto_1" FromRole="projeto" ToRole="usuario" />
     <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_0" FromRole="projeto" ToRole="vaga" />
+    <Property Name="Descricao" Type="String" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -55,6 +57,7 @@
     <NavigationProperty Name="Notificacao" Relationship="Self.FK_notificacao_0" FromRole="usuario" ToRole="notificacao" />
     <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_1" FromRole="usuario" ToRole="projeto" />
     <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_1" FromRole="usuario" ToRole="vaga" />
+    <Property Name="DescricaoPessoal" Type="String" Nullable="false" />
   </EntityType>
   <EntityType Name="Vaga">
     <Key>

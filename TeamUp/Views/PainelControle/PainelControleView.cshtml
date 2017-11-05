@@ -67,9 +67,13 @@
         @foreach (Projeto p in Model.Projetos)
         {
             <div id="@Html.Raw("projeto" + p.Id)" class="item">
-                <div class="logo" style="background-image:url('@Url.Content("~/UserInputedFiles/ProjetoLogo/" + Html.Raw(p.Id + ".jpg"))')"></div>
+                <a class="noLinkEffect" href="@Url.Action("Index", "Projeto", new { Id = p.Id })">
+                    <div class="logo" style="@Html.BackgroundImage(p.Id, ImageType.ProjetoLogo)"></div>
+                </a>
                 <div class="textoItem">
-                    <h3>@p.Titulo</h3>
+                    <a class="noLinkEffect" href="@Url.Action("Index", "Projeto", new { Id = p.Id })">
+                        <h3>@p.Nome</h3>
+                    </a>
                     <p>@p.Descricao</p>
                 </div>
                 <div class="acoesItem">
@@ -78,10 +82,10 @@
                             Modificar
                         </button>
                     </a>
-                    <button class="acaoItem" onclick="modalExclusao('@p.Titulo', '@p.Id')">
+                    <button class="acaoItem" onclick="modalExclusao('@p.Nome', '@p.Id')">
                         Excluir
                     </button>
-                    <button class="acaoItem" onclick="modalAplicacoes('@p.Titulo', '@p.Id')">
+                    <button class="acaoItem" onclick="modalAplicacoes('@p.Nome', '@p.Id')">
                         Ver Aplicações
                     </button>
                 </div>

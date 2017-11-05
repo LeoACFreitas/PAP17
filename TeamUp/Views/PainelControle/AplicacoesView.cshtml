@@ -8,8 +8,8 @@
     {
         foreach (Aplicacao a in Model.Aplicacoes)
         {
-            <div class="item itemAplicacao">
-                <div id="@Html.Raw("aplicacao" + a.UsuarioId + "-" + a.VagaId)" class="usuarioImagem" style="background-image:
+            <div class="smallItem">
+                <div id="@Html.Raw("aplicacao" + a.UsuarioId + "-" + a.VagaId)" class="smallImg" style="background-image:
                  url('@Url.Content("~/UserInputedFiles/UsuarioPerfil/" + Html.Raw(a.UsuarioId + ".jpg"))')">
                 </div>
                 <div class="textoItem">

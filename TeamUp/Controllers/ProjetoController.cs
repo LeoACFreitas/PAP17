@@ -37,11 +37,19 @@ namespace TeamUp.Controllers
             {
                 if (v.Aplicacao.Any(a => a.UsuarioId == User.Id))
                 {
-                    v.Disponivel = false;
+                    v.Disponibilidade = DisponibilidadeVaga.AplicacaoEnviada;
+                }
+                else if(v.UsuarioId == User.Id)
+                {
+                    v.Disponibilidade = DisponibilidadeVaga.OcupandoEla;
+                }
+                else if (v.UsuarioId != null)
+                {
+                    v.Disponibilidade = DisponibilidadeVaga.VagaOcupada;
                 }
                 else
                 {
-                    v.Disponivel = true;
+                    v.Disponibilidade = DisponibilidadeVaga.Disponivel;
                 }
             }
 
@@ -66,8 +74,8 @@ namespace TeamUp.Controllers
                 projetoRepository.SaveAplicacao(aplicacao);
                 notificacaoRepository.Save(new Notificacao() {
                     UsuarioId = projeto.UsuarioId,
-                    Mensagem = "O usuário " + User.NomeCompleto + " enviou uma aplicação ao projeto " + projeto.Titulo +
-                    " para a vaga de " + vaga.Funcao + "."
+                    Mensagem = "O usuário " + User.NomeCompleto + " enviou uma aplicação ao projeto \"" + projeto.Nome +
+                    "\" para a vaga de \"" + vaga.Funcao + "\"."
                 });
             }
             catch
@@ -78,6 +86,35 @@ namespace TeamUp.Controllers
             }
 
             return Json(new { responseText = "Aplicação enviada com sucesso!" }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult AbandonarVaga(int id)
+        {
+            try
+            {
+                Vaga vaga = vagaRepository.FindVagaByIdWithProjeto(id);
+                vaga.UsuarioId = null;
+
+                vagaRepository.Update(vaga);
+
+                Notificacao notificacao = new Notificacao()
+                {
+                    UsuarioId = vaga.Projeto.UsuarioId,
+                    Mensagem = "O usuário \"" + User.NomeCompleto + "\" abandonou a vaga \"" + vaga.Funcao +
+                                "\" do projeto" + vaga.Projeto.Nome + "\"."
+                };
+
+                notificacaoRepository.Save(notificacao);
+            }
+            catch
+            {
+                //TODO: Registrar exceção em log
+                Response.StatusCode = 500;
+                return Content("Não foi possível abandonar a vaga em razão de falha interna.");
+            }
+
+            return Json(new { success = true, responseText = "Você não ocupa mais esta vaga." }, JsonRequestBehavior.AllowGet);
         }
 
     }

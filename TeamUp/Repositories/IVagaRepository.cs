@@ -9,5 +9,6 @@ namespace TeamUp.Repositories
 {
     interface IVagaRepository : IRepository<Vaga>
     {
+        Vaga FindVagaByIdWithProjeto(int id);
     }
 }

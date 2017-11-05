@@ -21,6 +21,7 @@
     <EntitySetMapping Name="notificacao">
       <EntityTypeMapping TypeName="TeamUpModel.Notificacao">
         <MappingFragment StoreEntitySet="notificacao">
+          <ScalarProperty Name="Data" ColumnName="data" />
           <ScalarProperty Name="Id" ColumnName="id" />
           <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
           <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
@@ -30,11 +31,12 @@
     <EntitySetMapping Name="projeto">
       <EntityTypeMapping TypeName="TeamUpModel.Projeto">
         <MappingFragment StoreEntitySet="projeto">
+          <ScalarProperty Name="Descricao" ColumnName="descricao" />
           <ScalarProperty Name="Id" ColumnName="id" />
           <ScalarProperty Name="CategoriaProjetoId" ColumnName="categoria_projeto_id" />
           <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
-          <ScalarProperty Name="Titulo" ColumnName="titulo" />
-          <ScalarProperty Name="Descricao" ColumnName="descricao" />
+          <ScalarProperty Name="Nome" ColumnName="nome" />
+          <ScalarProperty Name="Sobre" ColumnName="sobre" />
           <ScalarProperty Name="Progresso" ColumnName="progresso" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -42,6 +44,7 @@
     <EntitySetMapping Name="usuario">
       <EntityTypeMapping TypeName="TeamUpModel.Usuario">
         <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="DescricaoPessoal" ColumnName="descricao_pessoal" />
           <ScalarProperty Name="Id" ColumnName="id" />
           <ScalarProperty Name="Email" ColumnName="email" />
           <ScalarProperty Name="Senha" ColumnName="senha" />

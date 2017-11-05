@@ -15,6 +15,8 @@
     };
 })(jQuery);
 
+var ModalSize = { SMALL: 1, LARGE: 2 };
+
 $(document).ready(function () {
     $('#darken').on('click', function (e) {
         if (e.target !== this)
@@ -23,8 +25,6 @@ $(document).ready(function () {
         closeModal();
     });
 });
-
-var ModalSize = { SMALL: 1, LARGE: 2 };
 
 function showModal(title, idModalToShow, size) {
     if (title)
@@ -85,4 +85,19 @@ function confirmaSenha(caller, alvo, aviso) {
     else {
         $('#' + aviso).text('');
     }
+}
+
+function loadNotificacoes(actionLink) {
+    $.get(actionLink, {}, function (data) {
+        $("#notificacoes").html(data);
+    });
+    showModal('Notificações', '#notificacoes');
+}
+
+function deleteNotificacao(actionLink, id) {
+    $.get(actionLink, { id:id }, function (data) {
+        $(".notificacao#" + id).remove();
+    }).fail(function (data) {
+        alert(data);
+    });
 }

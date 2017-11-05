@@ -28,6 +28,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="usuario_id" Type="int" Nullable="false" />
           <Property Name="mensagem" Type="varchar" MaxLength="300" />
+          <Property Name="data" Type="datetime" />
         </EntityType>
         <EntityType Name="projeto">
           <Key>
@@ -36,9 +37,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="categoria_projeto_id" Type="int" Nullable="false" />
           <Property Name="usuario_id" Type="int" Nullable="false" />
-          <Property Name="titulo" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="descricao" Type="varchar" MaxLength="2000" />
+          <Property Name="nome" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="sobre" Type="varchar" MaxLength="2000" />
           <Property Name="progresso" Type="int" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -49,6 +51,7 @@
           <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="vaga">
           <Key>
@@ -212,6 +215,7 @@
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
           <Property Name="Mensagem" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_notificacao_0" FromRole="notificacao" ToRole="usuario" />
+          <Property Name="Data" Type="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="Projeto">
           <Key>
@@ -220,12 +224,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoriaProjetoId" Type="Int32" Nullable="false" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="Titulo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descricao" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sobre" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="Progresso" Type="Int32" />
           <NavigationProperty Name="CategoriaProjeto" Relationship="Self.FK_projeto_0" FromRole="projeto" ToRole="categoria_projeto" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_projeto_1" FromRole="projeto" ToRole="usuario" />
           <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_0" FromRole="projeto" ToRole="vaga" />
+          <Property Name="Descricao" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -240,6 +245,7 @@
           <NavigationProperty Name="Notificacao" Relationship="Self.FK_notificacao_0" FromRole="usuario" ToRole="notificacao" />
           <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_1" FromRole="usuario" ToRole="projeto" />
           <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_1" FromRole="usuario" ToRole="vaga" />
+          <Property Name="DescricaoPessoal" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Vaga">
           <Key>
@@ -400,6 +406,7 @@
           <EntitySetMapping Name="notificacao">
             <EntityTypeMapping TypeName="TeamUpModel.Notificacao">
               <MappingFragment StoreEntitySet="notificacao">
+                <ScalarProperty Name="Data" ColumnName="data" />
                 <ScalarProperty Name="Id" ColumnName="id" />
                 <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
                 <ScalarProperty Name="Mensagem" ColumnName="mensagem" />
@@ -409,11 +416,12 @@
           <EntitySetMapping Name="projeto">
             <EntityTypeMapping TypeName="TeamUpModel.Projeto">
               <MappingFragment StoreEntitySet="projeto">
+                <ScalarProperty Name="Descricao" ColumnName="descricao" />
                 <ScalarProperty Name="Id" ColumnName="id" />
                 <ScalarProperty Name="CategoriaProjetoId" ColumnName="categoria_projeto_id" />
                 <ScalarProperty Name="UsuarioId" ColumnName="usuario_id" />
-                <ScalarProperty Name="Titulo" ColumnName="titulo" />
-                <ScalarProperty Name="Descricao" ColumnName="descricao" />
+                <ScalarProperty Name="Nome" ColumnName="nome" />
+                <ScalarProperty Name="Sobre" ColumnName="sobre" />
                 <ScalarProperty Name="Progresso" ColumnName="progresso" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -421,6 +429,7 @@
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="TeamUpModel.Usuario">
               <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="DescricaoPessoal" ColumnName="descricao_pessoal" />
                 <ScalarProperty Name="Id" ColumnName="id" />
                 <ScalarProperty Name="Email" ColumnName="email" />
                 <ScalarProperty Name="Senha" ColumnName="senha" />

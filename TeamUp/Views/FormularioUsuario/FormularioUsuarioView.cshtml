@@ -28,6 +28,9 @@
         @Html.TextBoxFor(m => m.Usuario.UltimoNome)
         @Html.ValidationMessageFor(m => m.Usuario.UltimoNome)
 
+        @Html.TextAreaFor(m => m.Usuario.DescricaoPessoal)
+        @Html.ValidationMessageFor(m => m.Usuario.DescricaoPessoal)
+
         @Html.HiddenFor(m => m.ModoValor)
         @Html.HiddenFor(m => m.Usuario.Id)
 

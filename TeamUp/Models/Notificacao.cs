@@ -17,6 +17,7 @@ namespace TeamUp.Models
         public int Id { get; set; }
         public int UsuarioId { get; set; }
         public string Mensagem { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

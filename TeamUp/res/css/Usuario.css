@@ -1,0 +1,39 @@
+﻿.resultados {
+    clear: right;
+}
+
+.tituloSecao {
+    clear: both;
+    margin-top: 40px;
+}
+
+#perfil {
+    position: absolute;
+    background-size: cover;
+    z-index: 1;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: gainsboro;
+    width: 130px;
+    height: 130px;
+    bottom: -20px;
+}
+
+#nome {
+    margin-top: 35px;
+}
+
+#cover {
+    position: relative;
+    height: 30vh;
+    max-height: 200px;
+}
+
+@media (min-width: 992px) {
+    #perfil {
+        width: 150px;
+        height: 150px;
+        bottom: -25px;
+        margin-left: 80px;
+    }
+}

@@ -1,0 +1,67 @@
+﻿@using TeamUp.Models
+
+@model TeamUp.ViewModels.UsuarioViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{ @Model.Usuario.NomeCompleto  }
+
+@section header{
+    <link href="~/res/css/Usuario.css" rel="stylesheet" type="text/css" />
+}
+
+@section outsideContent{
+    <div id="cover" class="col-sm-8 col-sm-offset-2" style="background-image:url('@Url.Content("~/res/img/usrCover.jpg")')">
+        <div id="perfil" style="@Html.BackgroundImage(Model.Usuario.Id, ImageType.UsuarioPerfil)">
+
+        </div>
+    </div>    
+}
+
+@section content{
+    
+    <h1 id="nome">@Model.Usuario.NomeCompleto</h1>
+
+    <p>@Model.Usuario.DescricaoPessoal</p>
+
+    @if (Model.Usuario.Projeto.Count != 0)
+    {
+        <h3 class="tituloSecao">Projetos criados:</h3>
+
+        <div class="col-lg-8 resultados">
+            @foreach (Projeto p in Model.Usuario.Projeto)
+            {
+            <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = p.Id })">
+                <div class="smallImg" style="@Html.BackgroundImage(p.Id, ImageType.ProjetoLogo)"></div>
+                <div class="textoItem">
+                    <h3>@p.Nome</h3>
+                    <p>@p.Descricao</p>
+                </div>
+            </a>
+            }
+        </div>
+    }
+    
+    <hr style="clear:both" />
+
+    @if (Model.Usuario.Vaga.Count != 0)
+    {
+    <h3 class="tituloSecao">Projetos em que participa:</h3>
+
+        <div class="col-lg-8 resultados">
+            @foreach (Vaga v in Model.Usuario.Vaga)
+            {
+                <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = v.Projeto.Id })">
+                    <div class="smallImg" style="@Html.BackgroundImage(v.Projeto.Id, ImageType.ProjetoLogo)"></div>
+                    <div class="textoItem">
+                        <h3>@v.Projeto.Nome</h3>
+                        <h5>@v.Funcao <small>Função</small></h5>
+                    </div>
+                </a>
+            }
+        </div>
+}
+    
+}

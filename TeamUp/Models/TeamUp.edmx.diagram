@@ -12,12 +12,28 @@
         <EntityTypeShape EntityType="TeamUpModel.Usuario" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TeamUpModel.Vaga" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="TeamUpModel.FK_aplicacao_0" ManuallyRouted="false" />
-        <AssociationConnector Association="TeamUpModel.FK_aplicacao_1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_aplicacao_1" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9" PointY="4" />
+          <ConnectorPoint PointX="9" PointY="3.625" />
+          <ConnectorPoint PointX="5.375" PointY="3.625" />
+          <ConnectorPoint PointX="5.058386513328764" PointY="4.5442912162185154" />
+          <ConnectorPoint PointX="5.004113486671236" PointY="4.7018736275314827" />
+          <ConnectorPoint PointX="4.75" PointY="5.4396953125" />
+        </AssociationConnector>
         <AssociationConnector Association="TeamUpModel.FK_projeto_0" ManuallyRouted="false" />
         <AssociationConnector Association="TeamUpModel.FK_notificacao_0" ManuallyRouted="false" />
         <AssociationConnector Association="TeamUpModel.FK_projeto_1" ManuallyRouted="false" />
         <AssociationConnector Association="TeamUpModel.FK_vaga_0" ManuallyRouted="false" />
-        <AssociationConnector Association="TeamUpModel.FK_vaga_1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamUpModel.FK_vaga_1" ManuallyRouted="true" >
+          <ConnectorPoint PointX="1.5" PointY="3.8750000000000004" />
+          <ConnectorPoint PointX="1.5" PointY="3.75" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="3.7499999999999996" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="3.75" />
+          <ConnectorPoint PointX="5.2486153624274046" PointY="3.7499999999999996" />
+          <ConnectorPoint PointX="5.4152820290940706" PointY="3.75" />
+          <ConnectorPoint PointX="7.875" PointY="3.75" />
+          <ConnectorPoint PointX="8.25" PointY="4.8778595377604166" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

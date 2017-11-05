@@ -7,11 +7,14 @@ using TeamUp.CustomValidations;
 
 namespace TeamUp.Models
 {
+
+    public enum DisponibilidadeVaga { Disponivel, AplicacaoEnviada, OcupandoEla, VagaOcupada }
+
     [MetadataType(typeof(MetaData))]
     public partial class Vaga : IEntity
     {
 
-        public bool Disponivel { get; set; }
+        public DisponibilidadeVaga Disponibilidade { get; set; }
 
         internal class MetaData
         {

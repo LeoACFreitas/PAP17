@@ -1,12 +1,16 @@
-﻿#cover {
+﻿
+#cover {
     position: relative;
     background-size: cover;
     height: 200px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 0;
 }
 
 #logo {
-    position: relative;
+    position: absolute;
     background-size: cover;
     margin: 0 auto;
     z-index: 1;
@@ -15,11 +19,20 @@
     border-color: gainsboro;
     width: 120px;
     height: 120px;
-    bottom: -135px;
+    bottom: -100px;
+    left: 0;
+    right: 0;
 }
 
 #tituloProjeto {
-    margin: 0 0 0 0;
+    margin: 0 auto;
+    color: white;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    font-size: 5rem;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: 1.15em;
 }
 
 #wrapper {
@@ -59,14 +72,16 @@
 
 @media (min-width: 992px) {
     #cover {
-        height: 400px;
+        height: 70vh;
         background-size: cover;
     }
+
     #logo {
         width: 200px;
         height: 200px;
-        bottom: -255px;
+        bottom: -100px;
     }
+
     #reponsavelImagem {
         height: 50px;
         width: 50px;

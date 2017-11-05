@@ -23,6 +23,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="usuario_id" Type="int" Nullable="false" />
     <Property Name="mensagem" Type="varchar" MaxLength="300" />
+    <Property Name="data" Type="datetime" />
   </EntityType>
   <EntityType Name="projeto">
     <Key>
@@ -31,9 +32,10 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="categoria_projeto_id" Type="int" Nullable="false" />
     <Property Name="usuario_id" Type="int" Nullable="false" />
-    <Property Name="titulo" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="descricao" Type="varchar" MaxLength="2000" />
+    <Property Name="nome" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sobre" Type="varchar" MaxLength="2000" />
     <Property Name="progresso" Type="int" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="usuario">
     <Key>
@@ -44,6 +46,7 @@
     <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="vaga">
     <Key>

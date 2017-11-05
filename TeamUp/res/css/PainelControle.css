@@ -1,34 +1,4 @@
-﻿.item {
-    min-height: 80px;
-    margin: 15px 0 15px 0;
-    display: flex;
-    align-items: center;
-    background-color: lightgray;
-    box-shadow: 3px 3px 5px grey;
-}
-
-.itemAplicacao {
-    min-height: 60px;
-}
-
-.logo {
-    position: relative;
-    height: 100px;
-    width: 100px;
-    background-size: cover;
-    margin: 0 25px 0 25px;
-}
-
-.usuarioImagem {
-    position: relative;
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-size: cover;
-    margin: 0 15px 0 15px;
-}
-
-.acoesItem {
+﻿.acoesItem {
     display: flex;
     float: right;
     flex-direction: column;
@@ -39,14 +9,4 @@
 .acaoItem {
     min-width: 100px;
     margin: 5px 5px 5px 5px;
-}
-
-@media (min-width: 992px) {
-    .item {
-        min-height: 150px;
-    }
-
-    .itemAplicacao {
-        min-height: 100px;
-    }
 }

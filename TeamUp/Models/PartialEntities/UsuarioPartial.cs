@@ -9,7 +9,9 @@ namespace TeamUp.Models
     [MetadataType(typeof(Usuario.MetaData))]
     public partial class Usuario : IEntity
     {
-        
+
+        public string NomeCompleto { get { return PrimeiroNome + " " + UltimoNome; } }
+
         internal class MetaData
         {
             [Required]
@@ -28,6 +30,9 @@ namespace TeamUp.Models
             [Required]
             [StringLength(maximumLength: 25)]
             public String UltimoNome { get; set; }
+            
+            [StringLength(maximumLength: 500)]
+            public String DescricaoPessoal { get; set; }
         }
 
     }

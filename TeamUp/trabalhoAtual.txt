@@ -1,1 +1,1 @@
-﻿Save do projeto ta dando erro
+﻿Qnd fecha modal da aplicação dá merda

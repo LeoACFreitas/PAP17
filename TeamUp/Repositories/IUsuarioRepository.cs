@@ -10,7 +10,7 @@ namespace TeamUp.Repositories
     interface IUsuarioRepository : IRepository<Usuario>
     {
 
-        Usuario FindDiferente();
+        Usuario FindWithProjetosAndVagas(int id);
 
     }
 }

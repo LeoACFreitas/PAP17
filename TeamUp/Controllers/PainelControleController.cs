@@ -73,16 +73,16 @@ namespace TeamUp.Controllers
                 Notificacao notificacao = new Notificacao() {
                     UsuarioId = aplicacao.UsuarioId,
                     Mensagem = "A aplicação enviada para a vaga \"" + aplicacao.Vaga.Funcao + "\" do projeto \"" +
-                                aplicacao.Vaga.Projeto.Titulo + "\" foi rejeitada."
+                                aplicacao.Vaga.Projeto.Nome + "\" foi rejeitada."
                 };
 
                 notificacaoRepository.Save(notificacao);
 
                 projetoRepository.DeleteAplicacao(aplicacao);
-
             }
             catch
             {
+                //TODO: Registrar a exceção em log
                 Response.StatusCode = 500;
                 return Content("Não foi possível rejeitar a aplicação por falha interna.");
             }
@@ -106,7 +106,7 @@ namespace TeamUp.Controllers
                 {
                     UsuarioId = aplicacao.UsuarioId,
                     Mensagem = "A aplicação enviada para a vaga \"" + aplicacao.Vaga.Funcao + "\" do projeto \"" +
-                                aplicacao.Vaga.Projeto.Titulo + "\" foi aceita."
+                                aplicacao.Vaga.Projeto.Nome + "\" foi aceita."
                 };
 
                 notificacaoRepository.Save(notificacao);
@@ -116,6 +116,7 @@ namespace TeamUp.Controllers
             }
             catch
             {
+                //TODO: Registrar a exceção em log
                 Response.StatusCode = 500;
                 return Content("Não foi possível aceitar a aplicação por falha interna.");
             }

@@ -16,11 +16,14 @@
         <input name="ImagemCapa" type="file" accept=".jpg"/>
         @Html.ValidationMessage("ImagemCapa")
 
-        @Html.TextBoxFor(m => m.Projeto.Titulo)
-        @Html.ValidationMessageFor(m => m.Projeto.Titulo)
+        @Html.TextBoxFor(m => m.Projeto.Nome)
+        @Html.ValidationMessageFor(m => m.Projeto.Nome)
 
-        @Html.TextAreaFor(m => m.Projeto.Descricao)
+        @Html.TextBoxFor(m => m.Projeto.Descricao)
         @Html.ValidationMessageFor(m => m.Projeto.Descricao)
+
+        @Html.TextAreaFor(m => m.Projeto.Sobre)
+        @Html.ValidationMessageFor(m => m.Projeto.Sobre)
 
         <input type="range" min="0" max="100" value="@Model.Projeto.Progresso" class="slider" name="Projeto.Progresso" id="Projeto_Progresso">        
 

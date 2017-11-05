@@ -53,7 +53,7 @@ namespace TeamUp.Repositories
                 query = query.Where(p => p.CategoriaProjetoId == idCategoriaSelecionada);
 
             if (!String.IsNullOrEmpty(tituloProjetoBusca))
-                query = query.Where(p => p.Titulo.Contains(tituloProjetoBusca));
+                query = query.Where(p => p.Nome.Contains(tituloProjetoBusca));
 
             if (!String.IsNullOrEmpty(vagaBusca))
                 query = query.Where(p => p.Vaga.Any(v => v.Funcao.Contains(vagaBusca)));

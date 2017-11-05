@@ -28,6 +28,7 @@ namespace TeamUp.Models
         public string Senha { get; set; }
         public string PrimeiroNome { get; set; }
         public string UltimoNome { get; set; }
+        public string DescricaoPessoal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aplicacao> Aplicacao { get; set; }

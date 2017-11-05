@@ -6,9 +6,7 @@ using System.Web;
 
 namespace TeamUp.Services
 {
-
-    public enum ImageType { ProjetoCapa, ProjetoLogo, UsuarioPerfil }
-
+    
     public class ImageFileService
     {
 

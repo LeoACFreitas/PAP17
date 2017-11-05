@@ -23,9 +23,10 @@ namespace TeamUp.Models
         public int Id { get; set; }
         public int CategoriaProjetoId { get; set; }
         public int UsuarioId { get; set; }
-        public string Titulo { get; set; }
-        public string Descricao { get; set; }
+        public string Nome { get; set; }
+        public string Sobre { get; set; }
         public Nullable<int> Progresso { get; set; }
+        public string Descricao { get; set; }
     
         public virtual CategoriaProjeto CategoriaProjeto { get; set; }
         public virtual Usuario Usuario { get; set; }
