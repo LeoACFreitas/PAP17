@@ -10,6 +10,41 @@
 
 @section header{
     <link href="~/res/css/BuscaProjetos.css" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+
+            var ativaFuncao = (function () {
+                $(this).animate({ backgroundColor: "rgba(52, 73, 94, 0.63)" }, 250);
+                $(this).children(".vagaFuncao").fadeIn(250);
+            });
+
+            var desativaFuncao = (function () {
+                $(this).animate({ backgroundColor: "rgba(52, 73, 94, 0)" }, 250);
+                $(this).children(".vagaFuncao").fadeOut(250);
+            });
+
+            $(".itemContent").hover(function () {
+                $(this).find(".vagaContainer.animar").each(ativaFuncao);
+            }, function () {
+                $(this).find(".vagaContainer.animar").each(desativaFuncao);
+            });
+
+            $('#sempreMostrarFuncoes').on('change', function () {
+                if (this.checked) {
+                    $(".vagaContainer").each(ativaFuncao);
+                    $(".vagaContainer").each(function () {
+                        $(this).toggleClass('animar')
+                    });
+                } else {
+                    $(".vagaContainer").each(desativaFuncao);
+                    $(".vagaContainer").each(function () {
+                        $(this).toggleClass('animar')
+                    });
+                }
+            });
+
+        });
+    </script>
 }
 
 @section title{ Busca de Projetos }
@@ -34,27 +69,35 @@
 
         </form>
 
+        <input id="sempreMostrarFuncoes" type="checkbox" />
+        <label class="normalLabel" for="sempreMostrarFuncoes">Sempre mostrar funções</label>
+
     </div>
 
 
     <div id="resultados">
 
-        @for(int i = 0; i < Model.Projetos.Count(); i++)
+        @foreach(Projeto p in Model.Projetos)
         {
-
-            <div class="itemContainer col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1" id="@Html.Raw("projeto" + Model.Projetos[i].Id)">
-                <a class="noLinkEffect" href="@Url.Action("Index", "Projeto", new { Id = Model.Projetos[i].Id })" >
-                    <div class="projetoItem">
-                        <img id="@Html.Raw("usuarioImagem" + Model.Projetos[i].Id)" class="usuarioImagem"
-                             src="~/UserInputedFiles/UsuarioPerfil/@Html.Raw(Model.Projetos[i].UsuarioId + ".jpg")" />
-                        <img id="@Html.Raw("projetoLogo" + Model.Projetos[i].Id)" class="projetoLogo"
-                             src="~/UserInputedFiles/ProjetoLogo/@Html.Raw(Model.Projetos[i].Id + ".jpg")" />
-                        <h4>@Model.Projetos[i].Nome</h4>
-                        <p>@Model.Projetos[i].Descricao</p>
-                    </div>
-                </a>
+            <div class="itemContainer col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1" id="@Html.Raw("projeto" + p.Id)">
+                <div class="itemContent">
+                    <a class="noLinkEffect" href="@Url.Action("Index", "Projeto", new { Id = p.Id })">
+                        <div class="gradiente"></div>
+                        <div class="projetoItem" style="@Html.BackgroundImage(p.Id, ImageType.ProjetoLogo)">
+                            <div class="vagasOuter">
+                                @foreach (Vaga v in p.Vaga) { 
+                                <div class="vagaContainer animar">
+                                    <span class="vagaFuncao">@v.Funcao</span>
+                                    <div id="@v.Id" class="vagaIcone" style="background-image: url('@Url.Content("~/res/img/funcao.png")')"></div>
+                                </div>
+                                }
+                            </div>
+                            <h3 class="textoProjeto tituloProjeto">@p.Nome</h3>
+                            <p class="textoProjeto descricaoProjeto">@p.Descricao</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-
         }
 
     </div>

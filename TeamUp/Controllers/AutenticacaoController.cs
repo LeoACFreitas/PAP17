@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TeamUp.Services;
 using TeamUp.Util;
 using TeamUp.ViewModels;
@@ -35,7 +36,15 @@ namespace TeamUp.Controllers
                 }
             }
 
-            return Content("oi");
+            return RedirectToAction("Index", "BuscaProjetos");
+        }
+
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "BuscaProjetos");
         }
 
     }

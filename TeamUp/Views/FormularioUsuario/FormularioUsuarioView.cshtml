@@ -6,39 +6,68 @@
 
 @section title{ @Model.GetModo() de Usuário }
 
+@section header{    
+    <link href="~/res/css/FormularioUsuario.css" rel="stylesheet" />
+}
+
 @section content{
+
+    @{ IHtmlString campoObrigatorio = Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro ? Html.Raw("<span class=\"atencao\">*</span>") : Html.Raw(""); }
     
-    <form method="post" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
+    <div id="formWrapper">
+        <form method="post" class="mainForm" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
 
-        @Html.TextBoxFor(m => m.Usuario.Email)
-        @Html.ValidationMessageFor(m => m.Usuario.Email)
+            @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro)
+            {
+                <h1 class="titulo">Cadastre-se</h1>
+            }
+            else
+            {
+                <h1 class="titulo">Alteração de cadastro</h1>
+            }
 
-        @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro)
-        {
-            @Html.PasswordFor(m => m.Usuario.Senha)
-            @Html.ValidationMessageFor(m => m.Usuario.Senha)
+            @Html.LabelFor(m => m.Usuario.PrimeiroNome)@campoObrigatorio
+            @Html.TextBoxFor(m => m.Usuario.PrimeiroNome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Usuario.PrimeiroNome)
 
-            <input type="password" id="senhaConfimacao" onblur="confirmaSenha(this, 'Usuario_Senha', 'spanSenhaConfimacao')" />
-            <span id="spanSenhaConfimacao"></span>
-        }
+            @Html.LabelFor(m => m.Usuario.UltimoNome)@campoObrigatorio
+            @Html.TextBoxFor(m => m.Usuario.UltimoNome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Usuario.UltimoNome)
 
-        @Html.TextBoxFor(m => m.Usuario.PrimeiroNome)
-        @Html.ValidationMessageFor(m => m.Usuario.PrimeiroNome)
+            @Html.LabelFor(m => m.Usuario.Email)@campoObrigatorio
+            @Html.TextBoxFor(m => m.Usuario.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Usuario.Email)
 
-        @Html.TextBoxFor(m => m.Usuario.UltimoNome)
-        @Html.ValidationMessageFor(m => m.Usuario.UltimoNome)
+            @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro)
+            {
+                @Html.LabelFor(m => m.Usuario.Senha)@campoObrigatorio
+                @Html.PasswordFor(m => m.Usuario.Senha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Usuario.Senha)
 
-        @Html.TextAreaFor(m => m.Usuario.DescricaoPessoal)
-        @Html.ValidationMessageFor(m => m.Usuario.DescricaoPessoal)
+                <label for="senhaConfimacao">Confirme a Senha</label><span class="atencao">*</span>
+                <input type="password" id="senhaConfimacao" onblur="confirmaSenha(this, 'Usuario_Senha', 'spanSenhaConfimacao')" class="form-control" />
+                <span id="spanSenhaConfimacao"></span>
+            }
 
-        @Html.HiddenFor(m => m.ModoValor)
-        @Html.HiddenFor(m => m.Usuario.Id)
+            @Html.LabelFor(m => m.Usuario.DescricaoPessoal)
+            @Html.TextAreaFor(m => m.Usuario.DescricaoPessoal, new { @class = "form-control", placeholder = "Conte um pouco sobre você..." })
+            @Html.ValidationMessageFor(m => m.Usuario.DescricaoPessoal)
 
-        <input name="ImagemPerfil" type="file" />
+            @Html.HiddenFor(m => m.ModoValor)
+            @Html.HiddenFor(m => m.Usuario.Id)
 
-        <input type="submit" />
+            <label>Imagem de Perfil</label>
+            <input name="ImagemPerfil" type="file" style="margin: 10px 0 15px;" />
 
-    </form>
+            @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Cadastro)
+            {
+                <p class="atencao">* Campos obrigatórios</p>
+            }
+
+            <input type="submit" class="btn btn-default" />
+
+        </form>
+    </div>
 
     @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Alteracao)
     {

@@ -17,6 +17,7 @@ namespace TeamUp.Models
             [Required]
             [StringLength(maximumLength: 50)]
             [EmailAddress]
+            [Display(Name = "E-mail")]
             public String Email { get; set; }
 
             [Required]
@@ -25,13 +26,16 @@ namespace TeamUp.Models
 
             [Required]
             [StringLength(maximumLength: 25)]
+            [Display(Name = "Primeiro nome")]
             public String PrimeiroNome { get; set; }
 
             [Required]
             [StringLength(maximumLength: 25)]
+            [Display(Name = "Ultimo nome")]
             public String UltimoNome { get; set; }
             
             [StringLength(maximumLength: 500)]
+            [Display(Name = "Descrição pessoal")]
             public String DescricaoPessoal { get; set; }
         }
 

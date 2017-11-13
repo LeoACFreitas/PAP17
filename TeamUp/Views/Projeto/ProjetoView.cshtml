@@ -21,11 +21,15 @@
         }
 
         function abandonarVaga(id) {
-            $.get('@Url.Action("AbandonarVaga")', { id: id }, function (data) {
-                $(".abandonarVaga#" + id).attr('disabled', '');
-                $(".abandonarVaga#" + id).text(data.responseText);
-            }).fail(function (data) {
-                alert(data);
+            showModal("Abandonar vaga", "#confirmacao");
+            $("#confirmaModal").on("click", function () {
+                $.get('@Url.Action("AbandonarVaga")', { id: id }, function (data) {
+                    $(".abandonarVaga#" + id).attr('disabled', '');
+                    $(".abandonarVaga#" + id).text(data.responseText);
+                }).fail(function (data) {
+                    alert(data);
+                });
+                closeModal('#confirmacao');
             });
         }
 
@@ -111,6 +115,12 @@
 
             <input type="submit" value="Enviar" />
         </form>
+    </div>
+
+    <div id="confirmacao" style="display:none">
+        <p>Você deseja abandonar a vaga?</p>
+        <button id="confirmaModal">Sim</button>
+        <button onclick="closeModal('#confirmacao')">Não</button>
     </div>
 
 }

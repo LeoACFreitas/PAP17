@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="TeamUp.RouteConfig">
+    <Position X="28.5" Y="20" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.BackgroundImageHelper">
+    <Position X="19.25" Y="21.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BackgroundImageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.MvcApplication">
+    <Position X="28.5" Y="21.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.AutenticacaoController">
+    <Position X="36.75" Y="4.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAA=</HashCode>
+      <FileName>Controllers\AutenticacaoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.BaseController">
+    <Position X="43" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.BuscaProjetosController">
+    <Position X="47.75" Y="4.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\BuscaProjetosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.FormularioProjetoController">
+    <Position X="35.5" Y="7.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FormularioProjetoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.FormularioUsuarioController">
+    <Position X="40" Y="7.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAAAAAAAAAAAAACAAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FormularioUsuarioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.NotificacaoController">
+    <Position X="40.5" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIA=</HashCode>
+      <FileName>Controllers\NotificacaoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.PainelControleController">
+    <Position X="44.5" Y="7.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIEBAAAAkAAAAAAAEAAAAAAAAIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PainelControleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.ProjetoController">
+    <Position X="48.5" Y="7.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAABAAAAgAAAAAAAAAAAAAAAAJAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProjetoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Controllers.UsuarioController">
+    <Position X="44.5" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UsuarioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.CustomValidations.ConditionalFill">
+    <Position X="24.25" Y="24.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomValidations\ConditionalFill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.CustomValidations.ImageValidation">
+    <Position X="24.25" Y="27" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomValidations\ImageValidation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Models.Aplicacao">
+    <Position X="8.75" Y="5" Width="2.25" />
+    <NestedTypes>
+      <Class Name="TeamUp.Models.Aplicacao.MetaData">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\PartialEntities\AplicacaoPartial.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAABEAAAIAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\PartialEntities\AplicacaoPartial.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Usuario" />
+      <Property Name="Vaga" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TeamUp.Models.CategoriaProjeto" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\PartialEntities\CategoriaProjetoPartial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.Notificacao" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="8.75" Width="2.25" />
+    <AssociationLine Name="Usuario" Type="TeamUp.Models.Usuario">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.114" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAABAAAAIAAABAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\PartialEntities\NotificacaoPartial.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Usuario" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.Projeto" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="3.75" Width="2.75" />
+    <NestedTypes>
+      <Class Name="TeamUp.Models.Projeto.MetaData">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\PartialEntities\ProjetoPartial.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="CategoriaProjeto" Type="TeamUp.Models.CategoriaProjeto">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.363" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Usuario" Type="TeamUp.Models.Usuario" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.082" Y="6.911" />
+        <Point X="16.082" Y="8.094" />
+        <Point X="11.75" Y="8.094" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAQAAAAAAAECAAIAAAAAAAAAEAAGAIAA=</HashCode>
+      <FileName>Models\PartialEntities\ProjetoPartial.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CategoriaProjeto" />
+      <Property Name="Usuario" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.Usuario" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="7.5" Width="3.5" />
+    <NestedTypes>
+      <Class Name="TeamUp.Models.Usuario.MetaData">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\PartialEntities\UsuarioPartial.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgACAAAAACAAAAAAAABAAEAAACAAAEAAAAAgAIACIAA=</HashCode>
+      <FileName>Models\PartialEntities\UsuarioPartial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.Vaga" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="1.25" Width="3.25" />
+    <NestedTypes>
+      <Class Name="TeamUp.Models.Vaga.MetaData">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\PartialEntities\VagaPartial.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="Projeto" Type="TeamUp.Models.Projeto">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.908" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgACAAAAAAABAAAAAABAAAAAgIAAAAAAAIAEAAAAIAA=</HashCode>
+      <FileName>Models\PartialEntities\VagaPartial.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Disponibilidade" />
+      <Property Name="Projeto" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.TeamUpContext">
+    <Position X="1.25" Y="14.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAUABAAAQAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\TeamUp.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Models.InternalSystem.UsuarioLogado">
+    <Position X="17.5" Y="13.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAA=</HashCode>
+      <FileName>Models\InternalSystem\UsuarioLogado.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Models.InternalSystem.UsuarioLogadoSerializable">
+    <Position X="13.75" Y="13.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAgAAACAAA=</HashCode>
+      <FileName>Models\InternalSystem\UsuarioLogadoSerializable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Repositories.BaseRepository&lt;TEntity&gt;">
+    <Position X="6.5" Y="14.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQCAIAAAAAQAAAAAAAAAAAAAAEBAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repositories\BaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="context" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Repositories.CategoriaProjetoRepository">
+    <Position X="12.25" Y="18.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\CategoriaProjetoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Repositories.NotificacaoRepository">
+    <Position X="12.25" Y="20.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\NotificacaoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Repositories.ProjetoRepository">
+    <Position X="2" Y="18.25" Width="6" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAQAAAAEAARABA=</HashCode>
+      <FileName>Repositories\ProjetoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Repositories.UsuarioRepository">
+    <Position X="8.75" Y="20.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Repositories.VagaRepository">
+    <Position X="9" Y="18.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\VagaRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Services.ImageFileService">
+    <Position X="6.75" Y="22.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ImageFileService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.Services.LoginService" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="22.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAACCIAAACAAAAAAEAAAAAAAAAAAABACAAAAAAAAAAA=</HashCode>
+      <FileName>Services\LoginService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TeamUp.Util.InternalException">
+    <Position X="24" Y="17" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\InternalException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.AutenticacaoViewModel">
+    <Position X="41.75" Y="25.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AutenticacaoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.BuscaProjetosViewModel">
+    <Position X="43" Y="27" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAEAAAAAAAAEAAAIAAAAEAAIAA=</HashCode>
+      <FileName>ViewModels\BuscaProjetosViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.FormularioProjetoViewModel">
+    <Position X="36" Y="27" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TeamUp.ViewModels.FormularioProjetoViewModel.Modo">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\FormularioProjetoViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAACAAIAAAAAAAIAABAAAAAAAAAFAAAIAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\FormularioProjetoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.FormularioUsuarioViewModel">
+    <Position X="39.5" Y="27" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TeamUp.ViewModels.FormularioUsuarioViewModel.Modo">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\FormularioUsuarioViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAAAAAAAAAAAAAAAAAEBAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\FormularioUsuarioViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.PainelControleViewModel">
+    <Position X="36" Y="25.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQ=</HashCode>
+      <FileName>ViewModels\PainelControleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.ProjetoViewModel">
+    <Position X="39" Y="25.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ProjetoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeamUp.ViewModels.UsuarioViewModel">
+    <Position X="44" Y="25.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\UsuarioViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TeamUp.Models.IEntity">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.ICategoriaProjetoRepository">
+    <Position X="43.25" Y="15.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\ICategoriaProjetoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.INotificacaoRepository">
+    <Position X="43.25" Y="17.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\INotificacaoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.IProjetoRepository">
+    <Position X="34.25" Y="15.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAQAAAAEAARABA=</HashCode>
+      <FileName>Repositories\IProjetoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.IRepository&lt;TEntity&gt;">
+    <Position X="38" Y="13" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAQAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.IUsuarioRepository">
+    <Position X="39.75" Y="15.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IUsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TeamUp.Repositories.IVagaRepository">
+    <Position X="39.75" Y="17.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IVagaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TeamUp.ImageType">
+    <Position X="21" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Helpers\BackgroundImageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TeamUp.Models.DisponibilidadeVaga">
+    <Position X="13.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACgAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\PartialEntities\VagaPartial.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

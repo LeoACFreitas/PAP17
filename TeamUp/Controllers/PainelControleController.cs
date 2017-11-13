@@ -121,7 +121,7 @@ namespace TeamUp.Controllers
                 return Content("Não foi possível aceitar a aplicação por falha interna.");
             }
 
-            return Json(new { responseText = "A aplicação foi rejeitada com sucesso." }, JsonRequestBehavior.AllowGet);
+            return Json(new { responseText = "A aplicação foi aceita com sucesso." }, JsonRequestBehavior.AllowGet);
         }
 
     }

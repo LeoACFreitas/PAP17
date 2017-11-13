@@ -1,5 +1,5 @@
-﻿#resultados {
-    overflow: hidden;
+﻿form {
+    display: inline-block;
 }
 
 .itemContainer {
@@ -7,21 +7,87 @@
     margin-top: 30px;
 }
 
-.projetoItem {
-    height: 300px;
-    border: black;
-    border-style: solid;
-    padding: 10px 10px 10px 10px;
+.itemContent {
+    position: relative;
 }
 
-.usuarioImagem {
-    width: 50px;
-    height: 50px;
+.projetoItem {
+    height: 300px;
+    border-color: #16a085;
+    border-style: solid;
+    border-radius: 6px;
+    padding: 10px 10px 10px 10px;
+    background-size: cover;
+}
+
+.vagasOuter {
+    float: right;
+}
+
+.vagaContainer {
+    clear: both;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 2px 4px 2px 5px;
+    border-radius: 6px;
+}
+
+.vagaFuncao {
+    margin-left: auto;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    display: none;
+}
+
+.vagaIcone {
+    border-style: solid;
+    border-color: #16a085;
+    border-width: 2px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border-radius: 100%;
+    background-color: rgba(52, 73, 94, 0.63);
+    margin-left: 5px;
 }
 
 .projetoLogo {
     width: 100px;
     height: 100px;
+    float: right;
+}
+
+.gradiente {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 6px;
+    background-image: linear-gradient(rgba(15,20,31,0) 0,rgba(15,20,31,.1) 25%,rgba(15,20,31,.8) 100%);
+}
+
+.textoProjeto {
+    position: absolute;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+}
+
+.tituloProjeto {
+    top: 70%;
+}
+
+.descricaoProjeto {
+    top: 85%;
+}
+
+#resultados {
+    overflow: hidden;
+}
+
+#filtros {
+    margin-top: 20px;
 }
 
 #paginacao {

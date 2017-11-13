@@ -7,5 +7,11 @@ namespace TeamUp.Models
 {
     public partial class Notificacao : IEntity
     {
+
+        public Notificacao()
+        {
+            Data = DateTime.Now;
+        }
+
     }
 }

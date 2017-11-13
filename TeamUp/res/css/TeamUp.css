@@ -1,6 +1,20 @@
-﻿h1, h2, h3 {
+﻿html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+}
+
+h1, h2, h3 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+input {
+    display: block;
 }
 
 hr {
@@ -8,13 +22,25 @@ hr {
     margin-bottom: 15px;
 }
 
-.menuList > li {
-    display: inline;
-    padding-left: 10px;
+label {
+    margin-bottom: 0;
 }
 
-.preWrap {
-    white-space: pre-wrap;
+footer {
+    background-color: #34495e;
+    height: 100px;
+}
+
+.mainForm {
+    padding: 20px 100px 20px 100px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    width: 100%;
+}
+
+.righMenu {
+    float: right;
 }
 
 .noLinkEffect {
@@ -30,6 +56,53 @@ hr {
 .noLinkEffect:focus {
     color: inherit;
     text-decoration: none;
+}
+
+.menuList {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.menuItem {
+    padding: 0 10px 0 10px;
+    position: relative;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+}
+
+.normalLabel {
+    font-weight: normal;
+}
+
+button.menuItem {
+    background-color: inherit;
+    border-style: inherit;
+}
+    
+.menuItem:hover {
+    background-color: #3e5368;
+    color: #16a085;
+}
+
+.menuItem:focus {
+    background-color: #2a3f54;
+    color: #16a085;
+}
+
+.currentPage {
+    box-shadow: inset 0px -3px 0px #16a085;
+}
+
+.dropdown {
+    padding: 0 0 0 0;
+}
+
+.preWrap {
+    white-space: pre-wrap;
 }
 
 .item {
@@ -68,22 +141,72 @@ hr {
     margin: 0 15px 0 15px;
 }
 
+.wrapper {
+    margin-top: 40px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+
+.bodyContent {
+    padding: 20px;
+    left: 0;
+    right: 0;
+    height: inherit;
+    height: auto;
+    flex: 1;
+}
+
+.atencao {
+    color: red;
+}
+
+.form-control {
+    margin: 10px 0 15px 0;
+    width: 100%;
+}
+
+#formWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#menuContent {
+    max-width: inherit;
+}
+
 #menu {
     position: fixed;
     height: 40px;
     width: 100%;
-    background-color: aliceblue;
+    background-color: #34495e;
     z-index: 5;
 }
 
-#menuPlaceHolder {
-    height: 40px;
-    width: 100%;
+#menuContent {
+    display: flex;
+    align-items: center;
+    overflow: initial;
+    height: 100%;
 }
 
-#content {
-    padding-bottom: 20px;
-    overflow: hidden;
+#teamupLogo {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    border-style: solid;
+    border-color: #16a085;
+    border-radius: 100%;
+    display: inline-block
 }
 
 #modal {
@@ -110,7 +233,7 @@ hr {
     background: rgba(0, 0, 0, 0.5);
     height: 100vh;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     display: none;
     align-items: center;
 }
@@ -123,5 +246,13 @@ hr {
 
     .smallItem {
         min-height: 100px;
+    }
+
+    .bodyContent {
+        flex: 0 0 1060px;
+    }
+
+    .content {
+        width: 1060px;
     }
 }

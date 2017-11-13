@@ -63,6 +63,11 @@ namespace TeamUp.Controllers
                 usuario.Senha = usuarioRepository.FindById(usuario.Id).Senha;
 
                 usuarioRepository.Update(usuario);
+                using (LoginService loginService = new LoginService())
+                {
+                    loginService.UpdateAuthenticationCookie(usuario);
+                }
+
             }
 
             if (vm.ImagemPerfil != null)

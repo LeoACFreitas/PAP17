@@ -35,11 +35,11 @@ namespace TeamUp.Controllers
 
             foreach (Vaga v in vm.Projeto.Vaga)
             {
-                if (v.Aplicacao.Any(a => a.UsuarioId == User.Id))
+                if (Request.IsAuthenticated && v.Aplicacao.Any(a => a.UsuarioId == User.Id))
                 {
                     v.Disponibilidade = DisponibilidadeVaga.AplicacaoEnviada;
                 }
-                else if(v.UsuarioId == User.Id)
+                else if(Request.IsAuthenticated && v.UsuarioId == User.Id)
                 {
                     v.Disponibilidade = DisponibilidadeVaga.OcupandoEla;
                 }

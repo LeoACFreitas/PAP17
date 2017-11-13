@@ -51,6 +51,22 @@ namespace TeamUp.Services
             return new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
         }
 
+        public void UpdateAuthenticationCookie(Usuario usuario)
+        {
+            UsuarioLogado usuarioLogado = new UsuarioLogado(usuario);
+            UsuarioLogadoSerializable serializable = new UsuarioLogadoSerializable(usuario);
+
+            string userData = new JavaScriptSerializer().Serialize(serializable);
+
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                1, usuario.Email, DateTime.Now, DateTime.Now.AddHours(2), false, userData);
+
+            string encTicket = FormsAuthentication.Encrypt(authTicket);
+
+            HttpContext.Current.User = usuarioLogado;
+
+            HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+        }
 
         public static string GetHash(String entrada)
         {

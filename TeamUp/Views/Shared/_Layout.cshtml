@@ -4,18 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@RenderSection("title") - Team Up</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/res/css/TeamUp.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.color-2.1.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
     @RenderSection("header", false)
 </head>
 <body>
+    @{
+        var currentPage = ViewContext.RouteData.Values["controller"].ToString();
+    }
 
-    @if (IsSectionDefined("modalContent"))
-    {
         <div id="darken">
             <div id="modal" class="col-md-4 col-md-offset-4 col-xs-12">
                 <a id="closeModal" class="noLinkEffect" href="javascript:void(0)" onclick="closeModal()">X</a>
@@ -24,7 +25,10 @@
                 <hr style="display: none" />
 
                 <div id="modalContent">
-                    @RenderSection("modalContent")
+                    @if (IsSectionDefined("modalContent"))
+                    {
+                        @RenderSection("modalContent")
+                    }
 
                     <div id="notificacoes">
 
@@ -34,37 +38,61 @@
                 <p id="retorno" class="preWrap"></p>
             </div>
         </div>
-    }
 
-    <div id="menu">
-        <ul class="menuList">
-            <li>
-                <a href="javascript:loadNotificacoes('@Url.Action("Index", "Notificacao")')">
-                    Notificações
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "PainelControle")">
-                    Painel de Controle
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "BuscaProjetos")">
-                    Busca de Projetos
-                </a>
-            </li>
-        </ul>
+        <div id="menu">
+            <div id="menuContent" class="content">
+                <div id="teamupLogo"></div>
+                <nav class="menuList">
+                    <a class="menuItem noLinkEffect @(currentPage == "BuscaProjetos" ? "currentPage" : "")" href="@Url.Action("Index", "BuscaProjetos")">
+                        Busca de Projetos
+                    </a>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a class="menuItem noLinkEffect @(currentPage == "PainelControle" ? "currentPage" : "")" href="@Url.Action("Index", "PainelControle")">
+                            Painel de Controle
+                        </a>
+                        <a class="menuItem noLinkEffect" href="javascript:loadNotificacoes('@Url.Action("Index", "Notificacao")')">
+                            Notificações
+                        </a>
+
+                        <div class="dropdown righMenu menuItem @(currentPage == "FormularioUsuario" || currentPage == "Usuario" ? "currentPage" : "")">
+                            <button class="menuItem noLinkEffect dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @((User as TeamUp.Models.InternalSystem.UsuarioLogado).NomeCompleto)
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="@Url.Action("", "Usuario", new { id = (User as TeamUp.Models.InternalSystem.UsuarioLogado).Id })">Meu Perfil</a></li>
+                                <li><a href="@Url.Action("AlteraUsuario", "FormularioUsuario")">Alterar Cadastro</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Logout", "Autenticacao")">Log Out</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="menuItem righMenu noLinkEffect @(currentPage == "FormularioUsuario" ? "currentPage" : "")" href="@Url.Action("Index", "FormularioUsuario")">
+                            Cadastrar-se
+                        </a>
+                        <a class="menuItem righMenu noLinkEffect @(currentPage == "Autenticacao" ? "currentPage" : "")" href="@Url.Action("Index", "Autenticacao")">
+                            Log In
+                        </a>
+                    }
+                </nav>
+            </div>
+        </div>
+
+    <div class="wrapper">
+
+        @RenderSection("outsideContent", false)
+
+        <div class="col-sm-12 content bodyContent">
+            @RenderSection("content")
+        </div>
+
     </div>
 
-    <div id="menuPlaceHolder">
-    </div>
-
-
-    @RenderSection("outsideContent", false)
-
-    <div id="content" class="col-md-push-2 col-md-8 col-sm-12">
-        @RenderSection("content")
-    </div>
+    <footer>
+        asd
+    </footer>
 
     <script src="~/Scripts/TeamUp.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

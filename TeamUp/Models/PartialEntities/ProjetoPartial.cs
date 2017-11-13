@@ -22,10 +22,12 @@ namespace TeamUp.Models
 
             [Required]
             [MaxLength(2000)]
+            [Display(Name = "Sobre o Projeto")]
             public string Sobre { get; set; }
 
             [Required]
             [MaxLength(50)]
+            [Display(Name = "Descrição")]
             public string Descricao { get; set; }
 
         }

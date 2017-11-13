@@ -67,7 +67,7 @@ namespace TeamUp.Controllers
             projeto.Vaga = vm.Vagas.Where(v => v.Funcao != null && v.Descricao != null).ToList();
             projeto.CategoriaProjetoId = vm.IdCategoriaSelecionada;
 
-            if (projetoRepository.SimpleWhere(p => p.Nome.Equals(projeto.Nome)).Count() != 0)
+            if (vm.ModoValor == FormularioProjetoViewModel.Modo.Cadastro && projetoRepository.SimpleWhere(p => p.Nome.Equals(projeto.Nome)).Count() != 0)
                 ModelState.AddModelError("Projeto.Nome", "Já existe um projeto com este título.");
 
             if (projeto.Vaga.Count < 1)

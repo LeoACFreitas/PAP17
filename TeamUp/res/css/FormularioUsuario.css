@@ -1,0 +1,12 @@
+﻿.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p.atencao {
+    margin-top: 10px;
+}
+
+.content {
+    max-width: 600px;
+}
