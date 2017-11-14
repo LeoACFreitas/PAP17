@@ -1,0 +1,112 @@
+﻿.vagas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vagaContainer {
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.vagaContent {
+    background-color: #16a085;
+    padding: 5px 10px;
+    width: 200px;
+    height: 250px;
+}
+
+.vagaContent > textarea {
+    height: 100%;
+}
+
+input[type=range]{
+    width: 100%;
+    margin: 10px 0 15px 0;
+
+}
+
+textarea {
+    min-height: 16ex;
+}
+
+.smallInput {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#formProjeto {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    max-width: 705px;
+    margin: 0 auto;
+}
+
+.imageLabel {
+    position: relative;
+    margin: auto;
+    background-color: #34495e;
+    color: #16a085;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.previewContent {
+    position: absolute;
+    display: flex;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+.imageLabel:hover {
+    opacity: 1;
+}
+
+#logoWrapper {
+    max-width: 150px;
+    position: relative;
+    margin: 10px auto 15px;
+    padding: 0;
+}
+
+#logoPreview {
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url(/res/img/logoPreview.jpg);
+}
+
+#capaWrapper {
+    max-width: 675px;
+    position: relative;
+    margin: 10px auto 15px;
+    padding: 0;
+}
+
+#capaPreview {
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 36.3%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url(/res/img/capaPreview.jpg);
+}
+
+@media (max-width: 768px){
+    #formProjeto {
+        border-style: none;
+    }
+}

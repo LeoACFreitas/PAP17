@@ -93,7 +93,10 @@ namespace TeamUp.Controllers
             if (vm.ImagemLogo != null)
                 ImageFileService.StoreFile(ImageType.ProjetoLogo, vm.ImagemLogo, projeto.Id);
 
-            return Content("io");
+            TempData["mensagemRetorno"] = "Projeto " + (vm.ModoValor == FormularioProjetoViewModel.Modo.Cadastro ?
+                                                        "cadastrado" : "alterado") + " com sucesso!";
+            
+            return RedirectToAction("Index", "Projeto", new { Id = projeto.Id });
         }
 
     }

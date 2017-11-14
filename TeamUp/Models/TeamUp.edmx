@@ -51,7 +51,7 @@
           <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="true" />
         </EntityType>
         <EntityType Name="vaga">
           <Key>
@@ -245,7 +245,7 @@
           <NavigationProperty Name="Notificacao" Relationship="Self.FK_notificacao_0" FromRole="usuario" ToRole="notificacao" />
           <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_1" FromRole="usuario" ToRole="projeto" />
           <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_1" FromRole="usuario" ToRole="vaga" />
-          <Property Name="DescricaoPessoal" Type="String" Nullable="false" />
+          <Property Name="DescricaoPessoal" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Vaga">
           <Key>

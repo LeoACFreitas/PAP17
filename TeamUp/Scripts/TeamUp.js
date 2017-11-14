@@ -101,3 +101,16 @@ function deleteNotificacao(actionLink, id) {
         alert(data);
     });
 }
+
+function readURL(input, previewId) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $(previewId).css('background-image', 'url(' + e.target.result + ')');
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

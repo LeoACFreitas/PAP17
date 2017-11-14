@@ -73,7 +73,16 @@ namespace TeamUp.Controllers
             if (vm.ImagemPerfil != null)
                 ImageFileService.StoreFile(ImageType.UsuarioPerfil, vm.ImagemPerfil, usuario.Id);
 
-            return Content("oi");
+            if (vm.ModoValor == FormularioUsuarioViewModel.Modo.Cadastro)
+            {
+                TempData["mensagemRetorno"] = "Usuário cadastrado com sucesso!";
+                return RedirectToAction("Index", "Autenticacao");
+            }
+            else
+            {
+                TempData["mensagemRetorno"] = "Alterações realizadas com sucesso!";
+                return RedirectToAction("Index", "BuscaProjetos");
+            }            
         }
 
 

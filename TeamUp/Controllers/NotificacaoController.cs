@@ -23,6 +23,7 @@ namespace TeamUp.Controllers
         {
 
             List<Notificacao> list = notificacaoRepository.SimpleWhere(n => n.UsuarioId == User.Id);
+            list.Reverse();
 
             return View("NotificacaoView", list);
         }

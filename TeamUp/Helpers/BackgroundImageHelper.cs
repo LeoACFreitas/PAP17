@@ -21,7 +21,7 @@ namespace TeamUp
         public static string BackgroundImage(this HtmlHelper helper, int id, ImageType iType){
             string propriedade = "background-image:url('";
             propriedade += UrlHelper.GenerateContentUrl("~/UserInputedFiles/" + iType.ToString() + "/"
-                                            + id.ToString() + ".jpg", helper.ViewContext.HttpContext);
+                                            + id.ToString() + ".jpg?" + DateTime.Now.Millisecond, helper.ViewContext.HttpContext);
             propriedade += "')";
 
             return propriedade;

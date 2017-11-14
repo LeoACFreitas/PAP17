@@ -91,6 +91,12 @@
                 </div>
             </div>
         }
+
+        @if (Model.Projetos.Count == 0)
+        {
+            <h1>Você ainda não possui projetos</h1>
+            <p>Clique <a href="@Url.Action("Index", "FormularioProjeto")">aqui</a> para criar um novo projeto.</p>
+        }
     </div>
 }
 

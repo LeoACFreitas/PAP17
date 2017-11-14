@@ -121,6 +121,7 @@
     </Content>
     <Content Include="res\css\Autenticacao.css" />
     <Content Include="res\css\BuscaProjetos.css" />
+    <Content Include="res\css\FormularioProjeto.css" />
     <Content Include="res\css\FormularioUsuario.css" />
     <Content Include="res\css\PainelControle.css" />
     <Content Include="res\css\Projeto.css" />
@@ -223,6 +224,7 @@
     <Compile Include="ViewModels\BuscaProjetosViewModel.cs" />
     <Compile Include="ViewModels\FormularioProjetoViewModel.cs" />
     <Compile Include="ViewModels\FormularioUsuarioViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\PainelControleViewModel.cs" />
     <Compile Include="ViewModels\ProjetoViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />

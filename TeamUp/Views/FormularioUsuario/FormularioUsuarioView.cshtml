@@ -46,7 +46,7 @@
 
                 <label for="senhaConfimacao">Confirme a Senha</label><span class="atencao">*</span>
                 <input type="password" id="senhaConfimacao" onblur="confirmaSenha(this, 'Usuario_Senha', 'spanSenhaConfimacao')" class="form-control" />
-                <span id="spanSenhaConfimacao"></span>
+                <span id="spanSenhaConfimacao" class="field-validation-error"></span>
             }
 
             @Html.LabelFor(m => m.Usuario.DescricaoPessoal)
@@ -54,7 +54,10 @@
             @Html.ValidationMessageFor(m => m.Usuario.DescricaoPessoal)
 
             @Html.HiddenFor(m => m.ModoValor)
-            @Html.HiddenFor(m => m.Usuario.Id)
+            @if (Model.ModoValor == TeamUp.ViewModels.FormularioUsuarioViewModel.Modo.Alteracao)
+            {
+                @Html.HiddenFor(m => m.Usuario.Id)
+            }
 
             <label>Imagem de Perfil</label>
             <input name="ImagemPerfil" type="file" style="margin: 10px 0 15px;" />

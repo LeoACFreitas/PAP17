@@ -46,7 +46,7 @@
     <Property Name="senha" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="primeiro_nome" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="ultimo_nome" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="descricao_pessoal" Type="varchar" MaxLength="500" Nullable="true" />
   </EntityType>
   <EntityType Name="vaga">
     <Key>

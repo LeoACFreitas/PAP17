@@ -6,51 +6,99 @@
 
 @section title{ @Model.GetModo() de Projeto }
 
+@section header {    
+    <link href="~/res/css/FormularioProjeto.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $(document.body).on('change', '#ImagemLogo', function () {
+                readURL(this, '#logoPreview');
+            });
+            $(document.body).on('change', '#ImagemCapa', function () {
+                readURL(this, '#capaPreview');
+            });
+            $(document.body).on('input', '#Projeto_Progresso', function () {
+                $("#valorProgresso").text(this.value + '%');
+            });
+        });        
+    </script>
+}
+
 @section content{
     
-    <form method="post" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
-
-        <input name="ImagemLogo" type="file" accept=".jpg"/>
-        @Html.ValidationMessage("ImagemLogo")
-
-        <input name="ImagemCapa" type="file" accept=".jpg"/>
-        @Html.ValidationMessage("ImagemCapa")
-
-        @Html.TextBoxFor(m => m.Projeto.Nome)
-        @Html.ValidationMessageFor(m => m.Projeto.Nome)
-
-        @Html.TextBoxFor(m => m.Projeto.Descricao)
-        @Html.ValidationMessageFor(m => m.Projeto.Descricao)
-
-        @Html.TextAreaFor(m => m.Projeto.Sobre)
-        @Html.ValidationMessageFor(m => m.Projeto.Sobre)
-
-        <input type="range" min="0" max="100" value="@Model.Projeto.Progresso" class="slider" name="Projeto.Progresso" id="Projeto_Progresso">        
-
-        @{Model.Categorias.Insert(0, new TeamUp.Models.CategoriaProjeto() { Id = 0, Nome = "Selecione..." });}
-        @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
-        @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
-
-        <br />
-        <br />
-
-        @for (int i = 0; i < 5; i++)
+    <form method="post" id="formProjeto" class="col-xs-12" enctype="multipart/form-data" action="@Url.Action("EfetuaCadastro")">
+        @if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Cadastro)
         {
-            @Html.TextBoxFor(m => m.Vagas[i].Funcao)
-            @Html.ValidationMessageFor(m => m.Vagas[i].Funcao)
-
-            @Html.TextBoxFor(m => m.Vagas[i].Descricao)
-            @Html.ValidationMessageFor(m => m.Vagas[i].Descricao)
-
-            if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao)
-            {
-                @Html.HiddenFor(m => m.Vagas[i].Id);
-            }
-
-            @Html.ValidationMessage("Vaga" + i)
-
-            <br />
+            <h1 class="titulo">Cadastrar projeto</h1>
         }
+
+        <div class="smallInput">
+            @Html.LabelFor(m => m.Projeto.Nome)
+            @Html.TextBoxFor(m => m.Projeto.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Projeto.Nome)
+
+            @Html.LabelFor(m => m.Projeto.Descricao)
+            @Html.TextBoxFor(m => m.Projeto.Descricao, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Projeto.Descricao)
+        </div>
+
+        <div class="smallInput">
+            <label for="Projeto_Progresso">Progresso</label>
+            <span id="valorProgresso" class="inputTip">
+                @(Model.Projeto.Progresso != null ? Model.Projeto.Progresso : 0)%
+            </span>
+            <input id="Projeto_Progresso" type="range" min="0" max="100" value="@(Model.Projeto.Progresso != null ?
+                Model.Projeto.Progresso : 0)" list="tickmarks" name="Projeto.Progresso"/>
+            <datalist id="tickmarks">
+                <option value="0">
+                <option value="10">
+                <option value="20">
+                <option value="30">
+                <option value="40">
+                <option value="50">
+                <option value="60">
+                <option value="70">
+                <option value="80">
+                <option value="90">
+                <option value="100">
+            </datalist>
+
+            @{Model.Categorias.Insert(0, new TeamUp.Models.CategoriaProjeto() { Id = 0, Nome = "Selecione..." });}
+            <label>Categoria</label>
+            @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"),
+            new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
+        </div>
+
+        <div style="width: 80%; margin: 0 auto">
+            @Html.LabelFor(m => m.Projeto.Sobre)
+            @Html.TextAreaFor(m => m.Projeto.Sobre, new { @class = "form-control", placeholder = "Descreva o seu projeto..." })
+            @Html.ValidationMessageFor(m => m.Projeto.Sobre)
+        </div>
+
+        <hr style="margin-top: 30px;" />
+
+        <h3 class="titulo">Vagas</h3>
+        <div class="vagas">
+            @for (int i = 0; i < 5; i++)
+            {
+                <div class="vagaContainer">
+                    <div class="vagaContent">
+                        @Html.TextBoxFor(m => m.Vagas[i].Funcao, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Vagas[i].Funcao)
+
+                        @Html.TextAreaFor(m => m.Vagas[i].Descricao, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Vagas[i].Descricao)
+
+                        @if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao)
+                        {
+                            @Html.HiddenFor(m => m.Vagas[i].Id);
+                        }
+
+                        @Html.ValidationMessage("Vaga" + i)
+                    </div>
+                </div>
+            }
+        </div>
 
         @if (Html.ViewData.ModelState["other"] != null)
         {
@@ -68,6 +116,28 @@
         {
             @Html.HiddenFor(m => m.IdCategoriaSelecionada)
         }
+
+        <div id="logoWrapper">
+            <div id="logoPreview" style="@(Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao ?
+                                    Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo) : "")">
+                <div class="previewContent">
+                    <input id="ImagemLogo" name="ImagemLogo" class="invisibleElement" type="file" />
+                    <label for="ImagemLogo" class="imageLabel"><img src="/res/img/upload.png" width="25" /> Logo</label>
+                    @Html.ValidationMessage("ImagemLogo")
+                </div>
+            </div>
+        </div>
+
+        <div id="capaWrapper" class="col-xs-12">
+            <div id="capaPreview" style="@(Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao ?
+                                    Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoCapa) : "")">
+                <div class="previewContent">
+                    <input id="ImagemCapa" name="ImagemCapa" class="invisibleElement" type="file" />
+                    <label for="ImagemCapa" class="imageLabel"><img src="/res/img/upload.png" width="25" /> Capa</label>
+                    @Html.ValidationMessage("ImagemCapa")
+                </div>
+            </div>
+        </div>
 
         <input type="submit" />
 

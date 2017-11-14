@@ -102,7 +102,7 @@ namespace TeamUp.Controllers
                 {
                     UsuarioId = vaga.Projeto.UsuarioId,
                     Mensagem = "O usuário \"" + User.NomeCompleto + "\" abandonou a vaga \"" + vaga.Funcao +
-                                "\" do projeto" + vaga.Projeto.Nome + "\"."
+                                "\" do projeto \"" + vaga.Projeto.Nome + "\"."
                 };
 
                 notificacaoRepository.Save(notificacao);

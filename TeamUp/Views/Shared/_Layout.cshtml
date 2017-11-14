@@ -9,7 +9,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.color-2.1.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-
+    
     @RenderSection("header", false)
 </head>
 <body>
@@ -33,6 +33,11 @@
                     <div id="notificacoes">
 
                     </div>
+
+                    <div id="mensagemRetorno" style="display: none">
+                        <p id="mensagem">@(TempData.ContainsKey("mensagemRetorno") ? TempData["mensagemRetorno"] : "")</p>
+                    </div>
+
                 </div>
 
                 <p id="retorno" class="preWrap"></p>
@@ -50,6 +55,9 @@
                     {
                         <a class="menuItem noLinkEffect @(currentPage == "PainelControle" ? "currentPage" : "")" href="@Url.Action("Index", "PainelControle")">
                             Painel de Controle
+                        </a>
+                        <a class="menuItem noLinkEffect @(currentPage == "FormularioProjeto" ? "currentPage" : "")" href="@Url.Action("Index", "FormularioProjeto")">
+                            Cadastrar Projeto
                         </a>
                         <a class="menuItem noLinkEffect" href="javascript:loadNotificacoes('@Url.Action("Index", "Notificacao")')">
                             Notificações
@@ -84,7 +92,7 @@
 
         @RenderSection("outsideContent", false)
 
-        <div class="col-sm-12 content bodyContent">
+        <div class="col-xs-12 content bodyContent">
             @RenderSection("content")
         </div>
 
@@ -99,7 +107,10 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
+    @if (TempData.ContainsKey("mensagemRetorno"))
+    {
+        <script>showModal(undefined, "#mensagemRetorno")</script>
+    }
 
 </body>
 </html>

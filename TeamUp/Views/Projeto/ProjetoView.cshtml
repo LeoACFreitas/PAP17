@@ -36,16 +36,17 @@
     </script>
 }
 
-@section outsideContent{    
+@section outsideContent{
     <div id="cover" class="col-xs-12" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoCapa)">
         <h1 id="tituloProjeto">@Model.Projeto.Nome</h1>
         <h2>@Model.Projeto.Descricao</h2>
-        <div id="logo" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo)">            
+        <div id="logo" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo)">
         </div>
     </div>
 }
 
 @section content{
+
     <div id="responsavel">
         <a id="linkUsuario" class="noLinkEffect" href="@Url.Action("", "Usuario", new { Id = Model.Projeto.UsuarioId })">
             <div id="reponsavelImagem" style="@Html.BackgroundImage(Model.Projeto.UsuarioId, ImageType.UsuarioPerfil)">

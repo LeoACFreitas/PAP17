@@ -57,7 +57,7 @@
     <NavigationProperty Name="Notificacao" Relationship="Self.FK_notificacao_0" FromRole="usuario" ToRole="notificacao" />
     <NavigationProperty Name="Projeto" Relationship="Self.FK_projeto_1" FromRole="usuario" ToRole="projeto" />
     <NavigationProperty Name="Vaga" Relationship="Self.FK_vaga_1" FromRole="usuario" ToRole="vaga" />
-    <Property Name="DescricaoPessoal" Type="String" Nullable="false" />
+    <Property Name="DescricaoPessoal" Type="String" Nullable="true" />
   </EntityType>
   <EntityType Name="Vaga">
     <Key>
