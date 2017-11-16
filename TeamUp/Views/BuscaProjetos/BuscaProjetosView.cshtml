@@ -55,17 +55,28 @@
 
         <form method="get" action="@Url.Action("Index")">
 
-            @Html.TextBoxFor(m => m.TituloProjetoBusca)
-            @Html.ValidationMessageFor(m => m.TituloProjetoBusca)
-
-            @Html.TextBoxFor(m => m.VagaBusca)
-            @Html.ValidationMessageFor(m => m.VagaBusca)
+            <div class="filtroInput" style="width: 280px;">
+                @Html.LabelFor(m => m.TituloProjetoBusca)
+                @Html.TextBoxFor(m => m.TituloProjetoBusca, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TituloProjetoBusca)
+            </div>
+            
+            <div class="filtroInput" style="width: 255px;">
+                @Html.LabelFor(m => m.VagaBusca)
+                @Html.TextBoxFor(m => m.VagaBusca, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.VagaBusca)
+            </div>
 
             @{Model.Categorias.Insert(0, new TeamUp.Models.CategoriaProjeto() { Id = 0, Nome = "Selecione..." });}
-            @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"))
-            @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
+            <div class="filtroInput" style="width: 170px;">
+                @Html.LabelFor(m => m.IdCategoriaSelecionada)
+                @Html.DropDownListFor(m => m.IdCategoriaSelecionada, new MultiSelectList(Model.Categorias, "Id", "Nome"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.IdCategoriaSelecionada)
+            </div>
 
-            <input type="submit" />
+            <button type="submit" class="btn btn-default filtroInput" >
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
 
         </form>
 

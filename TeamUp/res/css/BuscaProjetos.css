@@ -1,9 +1,13 @@
 ﻿form {
-    display: inline-block;
+    
+}
+
+label {
+    color: white;
 }
 
 .itemContainer {
-    padding: 0 25px 0 25px;
+    padding: 0 12px 0 12px;
     margin-top: 30px;
 }
 
@@ -12,7 +16,7 @@
 }
 
 .projetoItem {
-    height: 300px;
+    height: 290px;
     border-color: #16a085;
     border-style: solid;
     border-radius: 6px;
@@ -40,6 +44,7 @@
     color: white;
     text-shadow: 1px 1px 1px black;
     display: none;
+    z-index: 1;
 }
 
 .vagaIcone {
@@ -82,12 +87,19 @@
     top: 85%;
 }
 
+.filtroInput {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+
 #resultados {
     overflow: hidden;
 }
 
 #filtros {
-    margin-top: 20px;
+    background-color: #34485e;
+    padding: 10px;
 }
 
 #paginacao {

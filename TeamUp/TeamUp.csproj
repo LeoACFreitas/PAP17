@@ -224,7 +224,6 @@
     <Compile Include="ViewModels\BuscaProjetosViewModel.cs" />
     <Compile Include="ViewModels\FormularioProjetoViewModel.cs" />
     <Compile Include="ViewModels\FormularioUsuarioViewModel.cs" />
-    <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\PainelControleViewModel.cs" />
     <Compile Include="ViewModels\ProjetoViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />

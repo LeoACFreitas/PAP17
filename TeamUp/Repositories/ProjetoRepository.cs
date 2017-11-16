@@ -24,22 +24,42 @@ namespace TeamUp.Repositories
 
         public void UpdateWithVagas(Projeto projeto)
         {
-            var entity = context.projeto.Where(p => p.Id == projeto.Id).First();
+            var entity = context.projeto.Where(p => p.Id == projeto.Id).Include(p => p.Vaga).First();
             context.Entry(entity).CurrentValues.SetValues(projeto);
 
             context.SaveChanges();
 
+            Vaga[] vagasAtuais = entity.Vaga.ToArray();
+
+            foreach (Vaga vaga in vagasAtuais)
+            {
+                if (projeto.Vaga.Where(v => v.Id == vaga.Id).ToList().Count == 0)
+                {
+                    context.Entry(vaga).State = EntityState.Deleted;
+
+                    context.SaveChanges();
+                }
+            }
+
             foreach (Vaga vaga in projeto.Vaga)
             {
-                var original = context.vaga.Where(v => v.Id == vaga.Id).First();
+                vaga.ProjetoId = projeto.Id;
 
-                vaga.ProjetoId = original.ProjetoId;
-                vaga.UsuarioId = original.UsuarioId;
+                if (vaga.Id == 0)
+                {
+                    context.vaga.Add(vaga);
+                }
+                else
+                {
+                    var original = context.vaga.Where(v => v.Id == vaga.Id).FirstOrDefault();
+                    
+                    vaga.UsuarioId = original.UsuarioId;
 
-                context.Entry(original).CurrentValues.SetValues(vaga);
+                    context.Entry(original).CurrentValues.SetValues(vaga);
+                }
 
                 context.SaveChanges();
-            }
+            }           
             
         }
 

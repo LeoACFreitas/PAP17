@@ -48,6 +48,10 @@ footer {
     width: 100%;
 }
 
+.pagination {
+    float: right;
+}
+
 .righMenu {
     float: right;
 }
@@ -217,10 +221,6 @@ button.menuItem {
     flex: 1;
 }
 
-#menuContent {
-    
-}
-
 #menu {
     position: fixed;
     height: 40px;
@@ -297,5 +297,9 @@ button.menuItem {
     .content {
         max-width: 900px;
         margin: 0 auto;
+    }
+
+    #menuContent {
+        max-width: 900px;
     }
 }

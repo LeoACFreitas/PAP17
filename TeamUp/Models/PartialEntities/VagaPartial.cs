@@ -19,11 +19,13 @@ namespace TeamUp.Models
         internal class MetaData
         {
 
+            [Display(Name = "Função")]
             [StringLength(maximumLength: 40)]
             public string Funcao { get; set; }
 
             [StringLength(maximumLength: 300)]
             [ConditionalFill("Funcao")]
+            [Display(Name = "Descrição")]
             public string Descricao { get; set; }
 
         }

@@ -19,7 +19,46 @@
             $(document.body).on('input', '#Projeto_Progresso', function () {
                 $("#valorProgresso").text(this.value + '%');
             });
-        });        
+            $("#addVaga").on("click", function () {
+                $(".vagas").children().each(function () {
+                    if ($(this).css('display') == 'none') {
+                        $(this).fadeIn();
+                        return false;
+                    }
+                });
+                checkVagas();
+            });
+        });
+
+        function checkVagas() {
+            var vagaFound;
+            $(".vagas").children().each(function () {
+                if ($(this).css('display') == 'none') {
+                    vagaFound = true;
+                    return false;
+                }
+            });
+            if (!vagaFound) {
+                $("#addVaga").parent().hide();
+            } else {
+                $("#addVaga").parent().show();
+            }
+        }
+
+        function closeVaga(id) {
+            var callback = function () {
+                $("#" + id + ".vagaContainer > div").children().each(function () {
+                    if ($(this).attr('class') != 'vagaId') {
+                        $(this).val('');
+                    } else {
+                        $(this).val('0');
+                    }
+                });
+                checkVagas();
+            }
+            $("#" + id + ".vagaContainer").fadeOut(callback);
+
+        }
     </script>
 }
 
@@ -29,6 +68,10 @@
         @if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Cadastro)
         {
             <h1 class="titulo">Cadastrar projeto</h1>
+        }
+        else
+        {
+            <h1 class="titulo">Alterar projeto</h1>
         }
 
         <div class="smallInput">
@@ -81,34 +124,46 @@
         <div class="vagas">
             @for (int i = 0; i < 5; i++)
             {
-                <div class="vagaContainer">
+                <div id="@i" class="vagaContainer" style="@(i == 0 || (Model.Vagas != null && Model.Vagas[i].Funcao != null) ? "" : "display:none")">
                     <div class="vagaContent">
+                        <span class="closeVaga" onclick="closeVaga(@i)">x</span>
+
+                        @Html.LabelFor(m => m.Vagas[i].Funcao)
                         @Html.TextBoxFor(m => m.Vagas[i].Funcao, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Vagas[i].Funcao)
 
+                        @Html.LabelFor(m => m.Vagas[i].Descricao)
                         @Html.TextAreaFor(m => m.Vagas[i].Descricao, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Vagas[i].Descricao)
 
                         @if (Model.ModoValor == TeamUp.ViewModels.FormularioProjetoViewModel.Modo.Alteracao)
                         {
-                            @Html.HiddenFor(m => m.Vagas[i].Id);
+                            <input type="hidden" class="vagaId" name="@Html.NameFor(m => m.Vagas[i].Id)" value="@(Model.Vagas[i] != null ? Model.Vagas[i].Id.ToString() : "")" />
                         }
 
                         @Html.ValidationMessage("Vaga" + i)
                     </div>
                 </div>
             }
+
+            <div class="vagaContainer" style="display: flex;align-items: center;">
+                <div id="addVaga">
+                    <h1>+</h1>
+                </div>
+            </div>
+
+            @if (Html.ViewData.ModelState["other"] != null)
+            {
+                <ul>
+                    @foreach (var error in Html.ViewData.ModelState["other"].Errors)
+                    {
+                        <li class="field-validation-error">@error.ErrorMessage</li>
+                    }
+                </ul>
+            }
         </div>
 
-        @if (Html.ViewData.ModelState["other"] != null)
-        {
-            <ul>
-                @foreach (var error in Html.ViewData.ModelState["other"].Errors)
-                {
-                    <li>@error.ErrorMessage</li>
-                }
-            </ul>
-        }
+        <hr />
 
         @Html.HiddenFor(m => m.ModoValor)
         @Html.HiddenFor(m => m.Projeto.Id)
