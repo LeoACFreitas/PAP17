@@ -1,15 +1,86 @@
-﻿
+﻿.preWrap {
+    text-align: justify;
+}
+
+#cabecalhoProjeto {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 3px 10px;
+}
+
+#cabecalhoProjeto h3 {
+    margin: 0;
+    margin-left: auto;
+    font-weight: 400;
+    width: fit-content;
+}
+
+#cabecalhoProjeto * {
+    color: gray;
+    border-color: gray;
+}
+
+#hrCabecalho {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    position: relative;
+}
+
+#responsavel {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+}
+
+#tituloWrapper {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding-bottom: 5px;
+}
+
+#tituloWrapper > h1, #tituloWrapper > h2 {
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    font-size: 5rem;
+    font-weight: 600;
+    width: 100%;
+    height: 1.15em;
+}
+
+#tituloWrapper > h2 {
+    font-size: 2.3rem;
+}
+
+#coverWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+#coverContent {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 70px;
+}
+
 #cover {
     position: relative;
     background-size: cover;
     background-position: center center;
-    text-align: center;
-    display: flex;
-    align-items: center;
     padding: 0;
-    top: -20px;
     width: 100%;
     padding-bottom: 30%;
+    z-index: -1;
 }
 
 #logo {
@@ -20,22 +91,11 @@
     border-radius: 10px;
     border-style: solid;
     border-color: gainsboro;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     bottom: -100px;
     left: 0;
     right: 0;
-}
-
-#tituloProjeto {
-    margin: 0 auto;
-    color: white;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
-    font-size: 5rem;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.15);
-    width: 100%;
-    height: 1.15em;
 }
 
 #wrapper {
@@ -52,18 +112,13 @@
     margin-bottom: 50px;
 }
 
-#responsavel {
-    display: inline-block;
-    margin-top: 10px;
-}
-
 #reponsavelImagem {
     position: relative;
-    height: 25px;
-    width: 25px;
+    height: 50px;
+    width: 50px;
     border-radius: 100%;
     border-style: solid;
-    border-color: gray;
+    border-width: 1.5px;
     background-size: cover;
     display: inline-block;
 }
@@ -73,15 +128,19 @@
     align-items: center;
 }
 
-@media (min-width: 992px) {    
+@media (max-width: 768px) {
     #logo {
-        width: 200px;
-        height: 200px;
-        bottom: -100px;
+        width: 120px;
+        height: 120px;
+        bottom: -60px;
     }
 
     #reponsavelImagem {
-        height: 50px;
-        width: 50px;
+        height: 25px;
+        width: 25px;
+    }
+
+    #cover {
+        padding-bottom: 50%;
     }
 }

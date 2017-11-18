@@ -2,7 +2,7 @@
     
 }
 
-label {
+.filtroInput > label {
     color: white;
 }
 
@@ -93,8 +93,16 @@ label {
     margin: 0 10px 0 10px;
 }
 
+.mostrarFuncoesContainer {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
 #resultados {
     overflow: hidden;
+    padding-top: 15px;
 }
 
 #filtros {
@@ -104,4 +112,32 @@ label {
 
 #paginacao {
     float: right;
+}
+
+#filtroTitulo {
+    width: 280px;
+}
+
+#filtroVaga {
+    width: 255px;
+}
+
+#filtroCategoria {
+    width: 170px;
+}
+
+#sempreMostrarFuncoes {
+    display: inline;
+    margin: 0px 4px;
+}
+
+@media (max-width: 768px){
+    #filtroTitulo, #filtroVaga, #filtroCategoria, #filtroBuscar {
+        width: 100%;
+        margin: 0;
+    }
+
+    #filtroBuscar{
+        margin-top: 20px;
+    }
 }

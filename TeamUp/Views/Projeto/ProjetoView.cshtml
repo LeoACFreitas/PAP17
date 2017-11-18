@@ -37,28 +37,39 @@
 }
 
 @section outsideContent{
-    <div id="cover" class="col-xs-12" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoCapa)">
-        <h1 id="tituloProjeto">@Model.Projeto.Nome</h1>
-        <h2>@Model.Projeto.Descricao</h2>
-        <div id="logo" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo)">
+    <div id="coverWrapper">
+        <div id="coverContent">
+            <div id="tituloWrapper">
+                <h1>@Model.Projeto.Nome</h1>
+                <h2>@Model.Projeto.Descricao</h2>
+            </div>
+            <div id="logo" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoLogo)">
+            </div>
+        </div>
+        <div id="cover" class="col-xs-12" style="@Html.BackgroundImage(Model.Projeto.Id, ImageType.ProjetoCapa)">
         </div>
     </div>
+
+    <div id="cabecalhoProjeto">
+        <div id="responsavel">
+            <a id="linkUsuario" class="noLinkEffect" href="@Url.Action("", "Usuario", new { Id = Model.Projeto.UsuarioId })">
+                <div id="reponsavelImagem" style="@Html.BackgroundImage(Model.Projeto.UsuarioId, ImageType.UsuarioPerfil)">
+                </div>
+                <h3 style="font-weight:400;margin: 0 0 0 10px;display: flex;">
+                    @Model.Projeto.Usuario.PrimeiroNome @Model.Projeto.Usuario.UltimoNome
+                    <small class="observacao" style="top:-5px">autor</small>
+                </h3>
+            </a>
+        </div>
+
+        <div id="categoria">
+            <h3><small class="observacao">categoria</small>@Model.Projeto.CategoriaProjeto.Nome</h3>
+        </div>
+    </div>
+    <hr id="hrCabecalho" />
 }
 
 @section content{
-
-    <div id="responsavel">
-        <a id="linkUsuario" class="noLinkEffect" href="@Url.Action("", "Usuario", new { Id = Model.Projeto.UsuarioId })">
-            <div id="reponsavelImagem" style="@Html.BackgroundImage(Model.Projeto.UsuarioId, ImageType.UsuarioPerfil)">
-            </div>
-            <h3 style="color:gray;font-weight:400;margin: 0 0 0 10px;display: flex;">
-                @Model.Projeto.Usuario.PrimeiroNome @Model.Projeto.Usuario.UltimoNome
-                <small class="observacao" style="top:-5px">autor</small>
-            </h3>
-        </a>
-    </div>
-
-    <h3 style="float:right; color:gray;font-weight:400"><small class="observacao">categoria</small>@Model.Projeto.CategoriaProjeto.Nome</h3>
 
     <div id="wrapper" class="col-xs-10 col-sm-offset-1">
         <div class="itemDetalhe">
