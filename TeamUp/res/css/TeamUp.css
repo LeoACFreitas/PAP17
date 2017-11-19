@@ -128,8 +128,6 @@ button.menuItem {
     margin: 15px 0 15px 0;
     display: flex;
     align-items: center;
-    background-color: lightgray;
-    box-shadow: 3px 3px 2px grey;
 }
 
 .smallItem {
@@ -259,12 +257,10 @@ button.menuItem {
     display: flex;
     align-items: center;
     height: 230px;
-    width: fit-content;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 #modalContent > * {
-    margin: auto;
 }
 
 #closeModal {

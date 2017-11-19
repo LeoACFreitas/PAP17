@@ -2,6 +2,51 @@
     text-align: justify;
 }
 
+.divideItem {
+    margin: 40px 20px;
+}
+
+.vaga {
+    display: flex;
+    margin: 20px 0;
+}
+
+.textoVaga {
+    flex: 8;
+}
+
+.acaoVaga {
+    flex: 2;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.divideVaga {
+    position: relative;
+    width: 90%;
+    margin: auto;
+}
+
+.vagaIcone {
+    border-style: solid;
+    border-color: #16a085;
+    border-width: 4px;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: 20px;
+}
+
+#envioAplicacao {
+    width: 70%;
+}
+
+#envioAplicacao textarea {
+    height: 9.5rem;
+}
+    
 #cabecalhoProjeto {
     position: relative;
     display: flex;
@@ -11,14 +56,34 @@
 
 #cabecalhoProjeto h3 {
     margin: 0;
-    margin-left: auto;
     font-weight: 400;
     width: fit-content;
+    float: right;
+    height: fit-content;
 }
 
 #cabecalhoProjeto * {
     color: gray;
     border-color: gray;
+}
+
+#categoria {
+    width: 50%;
+    padding-left: 100px;
+    display: inline-block;
+    position: relative;
+    height: 45px;
+    width: 50%;
+}
+
+#categoriaContent {
+    padding-bottom: 5px;
+    box-shadow: 0px 1px 0px lightgrey;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 15px;
+    min-width: 330px;
 }
 
 #hrCabecalho {
@@ -31,7 +96,9 @@
 #responsavel {
     display: inline-block;
     position: relative;
-    height: 50px;
+    height: 45px;
+    width: 50%;
+    padding-right: 100px;
 }
 
 #tituloWrapper {
@@ -104,18 +171,17 @@
 
 .observacao {
     position: relative;
-    top: -10px;
+    top: -14px;
     margin-right: 5px;
 }
 
 .itemDetalhe{
-    margin-bottom: 50px;
 }
 
 #reponsavelImagem {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border-radius: 100%;
     border-style: solid;
     border-width: 1.5px;
@@ -126,6 +192,12 @@
 #linkUsuario {
     display: inline-flex;
     align-items: center;
+    float: right;
+    padding-bottom: 5px;
+    box-shadow: 0px 1px 0px lightgrey;
+    justify-content: flex-end;
+    padding-right: 15px;
+    min-width: 330px;
 }
 
 @media (max-width: 768px) {
