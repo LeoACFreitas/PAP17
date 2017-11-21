@@ -1,5 +1,6 @@
 ﻿.resultados {
     clear: right;
+    padding: 0;
 }
 
 .tituloSecao {
@@ -20,20 +21,22 @@
 }
 
 #nome {
-    margin-top: 35px;
+    margin-top: 0;
 }
 
 #cover {
     position: relative;
-    height: 30vh;
+    padding-bottom: 10%;
     max-height: 200px;
+    background-size: cover;
 }
 
 @media (min-width: 992px) {
     #perfil {
         width: 150px;
         height: 150px;
-        bottom: -25px;
-        margin-left: 80px;
+        right: 0;
+        top: -120px;
+        margin-right: 110px;
     }
 }

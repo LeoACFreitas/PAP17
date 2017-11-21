@@ -13,33 +13,35 @@
 }
 
 @section outsideContent{
-    <div id="cover" class="col-sm-8 col-sm-offset-2" style="background-image:url('@Url.Content("~/res/img/usrCover.jpg")')">
-        <div id="perfil" style="@Html.BackgroundImage(Model.Usuario.Id, ImageType.UsuarioPerfil)">
-
-        </div>
+    <div id="cover" class="col-sm-12" style="background-image:url('@Url.Content("~/res/img/usrCover.jpg")')">
     </div>    
 }
 
 @section content{
     
+    <div id="perfil" style="@Html.BackgroundImage(Model.Usuario.Id, ImageType.UsuarioPerfil)">
+    </div>
+
     <h1 id="nome">@Model.Usuario.NomeCompleto</h1>
 
-    <p>@Model.Usuario.DescricaoPessoal</p>
+    <p style="text-align: justify;padding: 0 20px;">@Model.Usuario.DescricaoPessoal</p>
 
     @if (Model.Usuario.Projeto.Count != 0)
     {
         <h3 class="tituloSecao">Projetos criados:</h3>
 
-        <div class="col-lg-8 resultados">
+        <div class="col-lg-12 resultados">
             @foreach (Projeto p in Model.Usuario.Projeto)
             {
-            <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = p.Id })">
-                <div class="smallImg" style="@Html.BackgroundImage(p.Id, ImageType.ProjetoLogo)"></div>
-                <div class="textoItem">
-                    <h3>@p.Nome</h3>
-                    <p>@p.Descricao</p>
+                <div class="col-lg-6">
+                    <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = p.Id })">
+                        <div class="smallImg" style="@Html.BackgroundImage(p.Id, ImageType.ProjetoLogo)"></div>
+                        <div class="textoItem">
+                            <h3>@p.Nome</h3>
+                            <p>@p.Descricao</p>
+                        </div>
+                    </a>
                 </div>
-            </a>
             }
         </div>
     }
@@ -50,18 +52,20 @@
     {
     <h3 class="tituloSecao">Projetos em que participa:</h3>
 
-        <div class="col-lg-8 resultados">
+        <div class="col-lg-12 resultados">
             @foreach (Vaga v in Model.Usuario.Vaga)
             {
-                <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = v.Projeto.Id })">
-                    <div class="smallImg" style="@Html.BackgroundImage(v.Projeto.Id, ImageType.ProjetoLogo)"></div>
-                    <div class="textoItem">
-                        <h3>@v.Projeto.Nome</h3>
-                        <h5>@v.Funcao <small>Função</small></h5>
-                    </div>
-                </a>
-            }
+                <div class="col-lg-6">
+                    <a class="noLinkEffect smallItem" href="@Url.Action("Index", "Projeto", new { id = v.Projeto.Id })">
+                        <div class="smallImg" style="@Html.BackgroundImage(v.Projeto.Id, ImageType.ProjetoLogo)"></div>
+                        <div class="textoItem">
+                            <h3>@v.Projeto.Nome</h3>
+                            <h5>@v.Funcao <small style="top: -7px;position: relative;">Função</small></h5>
+                        </div>
+                    </a>
+                </div>
+            }   
         </div>
-}
+    }
     
 }

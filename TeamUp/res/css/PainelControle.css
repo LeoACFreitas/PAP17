@@ -1,12 +1,43 @@
 ﻿.acoesItem {
     display: flex;
-    float: right;
     flex-direction: column;
     margin-left: auto;
     margin-right: 25px;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 70px;
+    justify-content: space-between;
 }
 
 .acaoItem {
-    min-width: 100px;
     margin: 5px 5px 5px 5px;
+}
+
+.acaoIcones {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#resultadosProjetos > hr {
+    border-color: gray;
+}
+
+#titulo {
+    margin-top: 30px;
+    background-color: #16a085;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.glyphicon {
+    font-size: x-large;
+    color: gray;
+}
+
+.acoesItem > button {
+    width: 100%;
 }

@@ -61,11 +61,16 @@
     </script>
 }
 
+@section outsideContent {
+    <div id="titulo">
+        <h1 style="font-size: 50px;">Painel de controle</h1>
+        <h3>Gerencie os seus projetos</h3>
+    </div>    
+}
+
 @section content{
     
     <div id="resultadosProjetos" class="col-sm-10 col-sm-offset-1">
-        <h1>Painel de controle</h1>
-        <h3>Gerencie os seus projetos</h3>
         <hr style="margin: 30px 0 0;" />
         @foreach (Projeto p in Model.Projetos)
         {
@@ -80,15 +85,15 @@
                     <p>@p.Descricao</p>
                 </div>
                 <div class="acoesItem">
-                    <a class="acaoItem" href="@Url.Action("AlteraProjeto", "FormularioProjeto", new { Id = p.Id })">
-                        <button style="width:100%">
-                            Modificar
-                        </button>
-                    </a>
-                    <button class="acaoItem" onclick="modalExclusao('@p.Nome', '@p.Id')">
-                        Excluir
-                    </button>
-                    <button class="acaoItem" onclick="modalAplicacoes('@p.Nome', '@p.Id')">
+                    <div class="acaoIcones">
+                        <a class="acaoItem" href="@Url.Action("AlteraProjeto", "FormularioProjeto", new { Id = p.Id })">
+                            <span class="glyphicon glyphicon-edit noLinkEffect" aria-hidden="true"></span>
+                        </a>
+                        <a class="acaoItem" onclick="modalExclusao('@p.Nome', '@p.Id')" href="javascript:void(0)">
+                            <span class="glyphicon glyphicon-trash noLinkEffect" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <button class="acaoItem btn btn-default" onclick="modalAplicacoes('@p.Nome', '@p.Id')">
                         Ver Aplicações
                     </button>
                 </div>
