@@ -10,6 +10,12 @@
     justify-content: space-between;
 }
 
+.smallItem {
+    background-color: white;
+    box-shadow: none;
+}
+
+
 .acaoItem {
     margin: 5px 5px 5px 5px;
 }
@@ -40,4 +46,13 @@
 
 .acoesItem > button {
     width: 100%;
+}
+
+#aplicacoes {
+    width: 600px;
+    display: none;
+}
+
+#resultadosAplicacoes > .smallItem > .acoesItem {
+    justify-content: space-evenly;
 }

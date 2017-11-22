@@ -243,12 +243,13 @@ button.menuItem {
 
 #teamupLogo {
     position: relative;
+    top: 1px;
     width: 40px;
     height: 100%;
-    border-style: solid;
-    border-color: #16a085;
-    border-radius: 100%;
-    display: inline-block
+    display: inline-block;
+    background-image: url(/res/img/menuLogo.png);
+    background-size: cover;
+    margin-right: 5px;
 }
 
 #modal {

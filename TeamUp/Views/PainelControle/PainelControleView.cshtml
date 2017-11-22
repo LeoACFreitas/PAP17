@@ -36,6 +36,7 @@
 
         function aceitarAplicacao(usuarioId, vagaId) {
             $("#aplicacoes").html('');
+            $("#aplicacoes").hide();
             $("#confirmacao").show();
             $("#acaoAplicacao").text('aceitar');
             $("#confirmaAplicacao").click(function () {
@@ -48,6 +49,7 @@
 
         function rejeitarAplicacao(usuarioId, vagaId) {
             $("#aplicacoes").html('');
+            $("#aplicacoes").hide();
             $("#confirmacao").show();
             $("#acaoAplicacao").text('rejeitar');
             $("#confirmaAplicacao").click(function () {
@@ -117,14 +119,14 @@
         <button onclick="closeModal('#exlusao')">Não</button>
     </div>
     
-    <div id="aplicacoes" style="display:none">
+    <div id="aplicacoes">
 
     </div>
 
     <div id="confirmacao" style="display:none">
         <p>Você deseja <span id="acaoAplicacao"></span> a aplicação?</p>
-        <button id="confirmaAplicacao">Sim</button>
-        <button onclick="closeModal('#confirmacao')">Não</button>
+        <button id="confirmaAplicacao" class="btn btn-default">Sim</button>
+        <button class="btn btn-default" onclick="closeModal('#confirmacao')">Não</button>
     </div>
 
 }

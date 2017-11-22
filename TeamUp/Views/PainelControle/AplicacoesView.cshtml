@@ -2,10 +2,11 @@
 
 @model TeamUp.ViewModels.PainelControleViewModel
 
-<div id="resultadosAplicacoes"class="col-sm-12">
+<div id="resultadosAplicacoes" class="col-sm-12">
 
     @if (Model.Aplicacoes.Count != 0)
     {
+        <hr />
         foreach (Aplicacao a in Model.Aplicacoes)
         {
             <div class="smallItem">
@@ -13,23 +14,25 @@
                  url('@Url.Content("~/UserInputedFiles/UsuarioPerfil/" + Html.Raw(a.UsuarioId + ".jpg"))')">
                 </div>
                 <div class="textoItem">
-                    <h3>@a.Vaga.Funcao</h3>
-                    <p>@a.Mensagem</p>
+                    <h3>@a.Usuario.NomeCompleto</h3>
+                    <h5>Função: @a.Vaga.Funcao</h5>
+                    <p style="max-width: 365px;text-align: justify;color: gray;"><span style="color: black;">Mensagem:</span> @a.Mensagem</p>
                 </div>
                 <div class="acoesItem">
-                    <button class="acaoItem" onclick="aceitarAplicacao(@a.UsuarioId, @a.VagaId)">
+                    <button class="acaoItem btn btn-default" onclick="aceitarAplicacao(@a.UsuarioId, @a.VagaId)">
                         Aceitar
                     </button>
-                    <button class="acaoItem" onclick="rejeitarAplicacao(@a.UsuarioId, @a.VagaId)">
+                    <button class="acaoItem btn btn-default" onclick="rejeitarAplicacao(@a.UsuarioId, @a.VagaId)">
                         Rejeitar
                     </button>
                 </div>
             </div>
+            <hr />
         }
     }
     else
     {
-        <h4>Não há aplicações para esse projeto.</h4>
+        <h4 style="text-align: center;">Não há aplicações para esse projeto.</h4>
     }
 
 
