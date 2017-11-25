@@ -2,6 +2,10 @@
     
 }
 
+.bodyContent {
+    top: -70px;
+}
+
 .filtroInput > label {
     color: white;
 }
@@ -22,6 +26,7 @@
     border-radius: 6px;
     padding: 10px 10px 10px 10px;
     background-size: cover;
+    background-position: center center;
 }
 
 .vagasOuter {
@@ -45,6 +50,7 @@
     text-shadow: 1px 1px 1px black;
     display: none;
     z-index: 1;
+    font-size: 12px;
 }
 
 .vagaIcone {
@@ -77,6 +83,7 @@
     position: absolute;
     color: white;
     text-shadow: 2px 2px 1px black;
+    max-width: 245px;
 }
 
 .tituloProjeto {
@@ -84,7 +91,7 @@
 }
 
 .descricaoProjeto {
-    top: 85%;
+    top: 83%;
 }
 
 .filtroInput {
@@ -98,6 +105,17 @@
     right: 20px;
     display: flex;
     align-items: center;
+}
+
+#titulo {
+    margin-top: 30px;
+    background-color: #16a085;
+    padding: 19px;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 11em;
 }
 
 #resultados {

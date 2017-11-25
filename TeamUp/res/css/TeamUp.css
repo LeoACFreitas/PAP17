@@ -8,6 +8,10 @@ body {
     flex-flow: column nowrap;
 }
 
+div {
+    background-position: center center;
+}
+
 h1, h2, h3 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -33,6 +37,11 @@ label {
 footer {
     background-color: #34495e;
     height: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 400px;
+    justify-content: space-between;
 }
 
 .titulo {
@@ -46,6 +55,10 @@ footer {
     border-width: 1px;
     border-color: gray;
     width: 100%;
+}
+
+.notificacao {
+    min-width: 500px;
 }
 
 .pagination {

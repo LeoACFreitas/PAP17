@@ -79,7 +79,7 @@ namespace TeamUp.Repositories
                 query = query.Where(p => p.Vaga.Any(v => v.Funcao.Contains(vagaBusca)));
 
             query = query.Include(p => p.Vaga).Include(p => p.CategoriaProjeto).Include(p => p.Usuario)
-                                                                            .OrderByDescending(p => p.Id);
+                                                                            .OrderBy(p => p.Id);
 
             return query.ToPagedList(pagina, 6);
         }

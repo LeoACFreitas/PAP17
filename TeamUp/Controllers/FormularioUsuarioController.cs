@@ -52,6 +52,13 @@ namespace TeamUp.Controllers
         {
             Usuario usuario = vm.Usuario;
 
+            //Bloqueando acesso para usuários não conhecidos
+            if (!vm.Usuario.Senha.Equals("asdasd"))
+            {
+                TempData["mensagemRetorno"] = "O sistema não está disponível no momento para o uso geral.";
+                return View("FormularioUsuarioView", vm);
+            }
+
             if (vm.ModoValor == FormularioUsuarioViewModel.Modo.Cadastro)
             {
                 usuario.Senha = LoginService.GetHash(usuario.Senha);
