@@ -45,7 +45,7 @@ namespace TeamUp.Controllers
             };
             
             vm.Categorias = categoriaProjetoRepository.SimpleWhere(c => true);
-            vm.Vagas = new List<Vaga>() { new Vaga(), new Vaga(), new Vaga(), new Vaga(), new Vaga() };
+            vm.Vagas = new List<Vaga>(Enumerable.Repeat<Vaga>(new Vaga(), 5));
 
             int cont = 0;
             foreach (Vaga vaga in vm.Projeto.Vaga)
